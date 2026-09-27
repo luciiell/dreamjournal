@@ -81,7 +81,7 @@ const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.w
 
   archives: {
     title: "Dreamland Archives",
-    subtitle: "A visual record of things worth remembering.",
+    subtitle: "Where all from the dreamland is stored safely.",
     photoSpreads: [
       { id: "spread-1", left: "#", right: "#", label: "Photo spread 1" },
       { id: "spread-2", left: "#", right: "#", label: "Photo spread 2" },
@@ -175,8 +175,8 @@ function buildBook(bookKey) {
       <h2>${esc(siteData.waypoints.title)}</h2>
       <p class="page-subtitle">${esc(siteData.waypoints.subtitle)}</p>
       <div class="page-divider"></div>
-      <p>Use this volume as a directory of places and paths that lead beyond the library. Each entry on the facing page is a direct link to an external destination.</p>
-      <p>There are no interior pages in this book.</p>
+      <p>Follow the index to find your destination.</p>
+      <p>- Dius.</p>
     `, `
       <span class="page-label">INDEX</span>
       <h3>Waypoints</h3>
