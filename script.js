@@ -113,13 +113,15 @@ function spread(left, right, kind = "standard") {
   return { left, right, kind };
 }
 
-function renderIndexButton(item, action) {
-  return `<button class="index-button" type="button" data-action="${action}" data-id="${esc(item.id || "")}"><span>${esc(item.name)}</span><span class="index-meta">open →</span></button>`;
+function renderIndexButton(item, action, extra = "") {
+  return `<button class="index-button" type="button" data-action="${action}" data-id="${esc(item.id || "")}" ${extra}><span>${esc(item.name)}</span><span class="index-meta">open →</span></button>`;
 }
 
 function residentsIndex() {
   return siteData.residents.map(category => {
-    const characters = category.characters.map(character => renderIndexButton(character, "resident-character")).join("");
+    const characters = category.characters.map(character =>
+      renderIndexButton(character, "resident-character")
+    ).join("");
     return `<details class="resident-category">
       <summary class="resident-category-toggle">
         <span class="resident-category-name">${esc(category.name)}</span>
@@ -196,7 +198,7 @@ function buildBook(bookKey) {
   }
 
   if (bookKey === "residents") {
-    return [spread(`
+    const result = [spread(`
       <span class="page-label">DREAMLAND RESIDENTS</span>
       <div class="page-ornament">✦</div>
       <h2>Dreamland Residents</h2>
@@ -206,6 +208,16 @@ function buildBook(bookKey) {
       <h3>Residents</h3>
       <div class="contents-grid">${residentsIndex()}</div>
     `)];
+
+    // Every resident is a real page in the book. The index is page 1;
+    // the arrows/keyboard can then move through every character in order.
+    siteData.residents.forEach(category => {
+      category.characters.forEach(character => {
+        result.push(residentSpread(category, character));
+      });
+    });
+
+    return result;
   }
 
   if (bookKey === "archives") {
@@ -253,7 +265,7 @@ function worldSpread(world) {
 }
 
 function residentSpread(category, character) {
-  return spread(`
+  const page = spread(`
     <button class="back-link" type="button" data-action="back-residents">← Back to residents index</button>
     <span class="page-label">${esc(category.name)}</span>
     <div class="page-ornament">✦</div>
@@ -263,7 +275,9 @@ function residentSpread(category, character) {
     <span class="page-label">RESIDENT</span>
     <h3>${esc(category.name)}</h3>
     <p>Use this page for additional character information, artwork, notes, history, or anything else you want to add.</p>
-  `);
+  `, "resident");
+  page.characterId = character.id;
+  return page;
 }
 
 function render() {
@@ -343,16 +357,16 @@ function openWorld(id) {
 }
 
 function openResidentCharacter(id) {
-  for (const category of siteData.residents) {
-    const character = category.characters.find(item => item.id === id);
-    if (character) {
-      spreads = [...buildBook("residents"), residentSpread(category, character)];
-      currentBook = "residents";
-      currentSpread = 1;
-      render();
-      return;
-    }
-  }
+  spreads = buildBook("residents");
+  const residentPage = spreads.findIndex(page =>
+    page.kind === "resident" && page.characterId === id
+  );
+
+  if (residentPage < 0) return;
+
+  currentBook = "residents";
+  currentSpread = residentPage;
+  render();
 }
 
 function openArchive(id) {
