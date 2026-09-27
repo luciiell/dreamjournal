@@ -49,7 +49,7 @@ const siteData = {
       name: "Crimmshaw Residents",
       description: "Those whom reside in Crimmshaw Heights.",
       characters: [
-        { id: "cade-beaumont", name: "Cade Beaumont", image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp", description: "Character information goes here. Add as much or as little as you like.", speakUrl: "https://example.com/" },
+        { id: "cade-beaumont", name: "Cade Beaumont", description: "Character information goes here. Add as much or as little as you like.", speakUrl: "https://example.com/" },
         { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident.", speakUrl: "https://example.com/" },
       ],
     },
