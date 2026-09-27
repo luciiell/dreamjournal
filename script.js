@@ -49,8 +49,20 @@ const siteData = {
       name: "Crimmshaw Residents",
       description: "Those whom reside in Crimmshaw Heights.",
       characters: [
-        { id: "cade-beaumont", name: "Cade Beaumont", description: "Character information goes here. Add as much or as little as you like.", speakUrl: "https://example.com/" },
-        { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident.", speakUrl: "https://example.com/" },
+        {
+          id: "dreamer1",
+          name: "Dreamer1",
+          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          description: "Another character entry.",
+          speakUrl: "https://example.com/"
+        },
+        {
+          id: "dreamer1",
+          name: "Dreamer1",
+          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          description: "Another character entry.",
+          speakUrl: "https://example.com/"
+        },
       ],
     },
     {
@@ -58,7 +70,20 @@ const siteData = {
       name: "Westvale Students",
       description: "The residents whom attend Westvale Univeristy in Crimmshaw Heights, TN.",
       characters: [
-        { id: "lalalaa", name: "Lalalaa", description: "Character information goes here.", speakUrl: "https://example.com/" },
+        {
+          id: "cade-beaumont",
+          name: "Cade Beaumont",
+          image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/5714755e-fad8-4cf0-bb02-cd3006ef5ccf_character-cade-beaumont"
+        },
+        {
+          id: "dreamer1",
+          name: "Dreamer1",
+          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          description: "Another character entry.",
+          speakUrl: "https://example.com/"
+        },
       ],
     },
     {
@@ -66,7 +91,13 @@ const siteData = {
       name: "Veravinythians",
       description: "Those whom are from Veravinyth with unknown origins...",
       characters: [
-        { id: "veravinythian", name: "Veravinythian", description: "Character information goes here.", speakUrl: "https://example.com/" },
+        {
+          id: "dreamer1",
+          name: "Dreamer1",
+          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          description: "Another character entry.",
+          speakUrl: "https://example.com/"
+        },
       ],
     },
     {
@@ -74,7 +105,13 @@ const siteData = {
       name: "Faeries",
       description: "will figure out the name soon lol",
       characters: [
-        { id: "kit", name: "Kit", description: "Character information goes here.", speakUrl: "https://example.com/" },
+        {
+          id: "dreamer1",
+          name: "Dreamer1",
+          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          description: "Another character entry.",
+          speakUrl: "https://example.com/"
+        },
       ],
     },
   ],
