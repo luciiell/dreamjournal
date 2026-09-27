@@ -1,29 +1,17 @@
-# Dreamlands Respiratory — GitHub Pages starter
+# Dreamlands GitHub Pages Starter
 
-A static HTML/CSS/JavaScript Dreamlands library.
+A static HTML/CSS/JavaScript Dreamlands site designed for GitHub Pages.
 
-## Books
+## Content model
 
-- **About the Dreamlands** — one informational page.
-- **Dreamland Waypoints** — one page of external links only.
-- **Dreamland Worlds** — index → world pages. Each world has info on the left, an image placeholder on the right, and an **Enter the dreamland** external link.
-- **Dreamland Residents** — index with editable categories and character entries. Each character gets its own page.
-- **Dreamland Archives** — cover/index opening spread followed by image-only photo spreads.
-
-## Editing content
-
-Open `script.js`. The `siteData` object at the top contains the editable content.
-
-### Archives
-
-Put photos in `images/archives/`, then update `siteData.archives.photoSpreads` with matching paths, e.g.:
-
-```js
-{ id: "spread-1", left: "images/archives/my-photo-01.jpg", right: "images/archives/my-photo-02.jpg", label: "Photo spread 1" }
-```
-
-The archive pages after the opening spread contain no captions or body text.
+- **About the Dreamlands:** one normal opening spread.
+- **Dreamland Waypoints:** one page only. Every entry is an external hyperlink. Edit `siteData.waypoints.links` in `script.js`.
+- **Dreamland Worlds:** index spread followed by one spread per world. The left page is information; the right page is an image placeholder and an **Enter the dreamland** external-link button. Edit `siteData.worlds`.
+- **Dreamland Residents:** index spread organized into editable categories, with each character getting their own page. Edit `siteData.residents`.
+- **Dreamland Archives:** cover + contents opening spread, followed by image-only photo spreads. Put images in `images/archives/` and edit `siteData.archives.photoSpreads`.
 
 ## GitHub Pages
 
-Upload `index.html`, `style.css`, `script.js`, and the `images` folder to your repository. Then enable **Settings → Pages → Deploy from a branch**.
+1. Upload the files to a GitHub repository.
+2. Keep `index.html`, `style.css`, `script.js`, and `images/` together.
+3. Enable GitHub Pages from the repository's Pages settings and deploy from your chosen branch.
