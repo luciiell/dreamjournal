@@ -476,6 +476,58 @@ h1 {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
+/* Dreamland Archives photo-book pages */
+.archive-mode .book-page {
+  background: #e9dfd2;
+}
+
+.archive-mode .page-inner {
+  padding: 0;
+  overflow: hidden;
+}
+
+.photo-page-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.7), transparent 32%),
+    linear-gradient(145deg, #d9c7bc, #eee2d5 48%, #cdb7ae);
+}
+
+.archive-photo {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .45s ease, filter .45s ease;
+}
+
+.archive-mode .book-page:hover .archive-photo {
+  transform: scale(1.012);
+}
+
+.archive-photo.image-missing {
+  opacity: 0;
+}
+
+.archive-photo-placeholder {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(93,62,57,.16);
+  box-shadow: inset 0 0 40px rgba(78,48,43,.1);
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .archive-photo-placeholder { inset: 10px; }
+}
+
 /* Page navigation */
 .reader {
   grid-template-columns: minmax(44px, 1fr) minmax(0, 1000px) minmax(44px, 1fr);
@@ -609,115 +661,3 @@ h1 {
   .reader-controls .put-away:hover,
   .reader-controls .put-away:focus-visible { transform: translateY(-2px); }
 }
-
-/* Content-library controls */
-.link-entry {
-  padding: 11px 0 13px;
-  border-bottom: 1px solid rgba(125, 86, 86, .16);
-}
-
-.link-entry:last-child { border-bottom: 0; }
-
-.link-entry p {
-  margin: 7px 0 0;
-  color: #8a7472;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-.index-action,
-.map-button,
-.secondary-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  border-radius: 999px;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: "Inter", sans-serif;
-  font-size: .7rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  transition: transform .2s, background .2s, color .2s, border-color .2s;
-}
-
-.index-action {
-  padding: 7px 13px;
-  border: 1px solid rgba(126, 84, 91, .28);
-  color: var(--rose-900);
-  background: rgba(255,255,255,.18);
-}
-
-.index-action:hover,
-.index-action:focus-visible {
-  color: var(--cream);
-  background: var(--rose-800);
-  border-color: var(--rose-800);
-  transform: translateX(3px);
-  outline: none;
-}
-
-.link-button { text-align: left; }
-
-.map-button {
-  margin: 18px 0;
-  padding: 13px 20px;
-  border: 1px solid var(--rose-800);
-  color: var(--cream);
-  background: var(--rose-800);
-}
-
-.map-button:hover,
-.map-button:focus-visible {
-  background: var(--rose-950);
-  transform: translateY(-2px);
-  outline: none;
-}
-
-.secondary-action {
-  margin-top: 14px;
-  padding: 8px 13px;
-  border: 1px solid rgba(126, 84, 91, .28);
-  color: var(--rose-800);
-  background: transparent;
-}
-
-.secondary-action:hover,
-.secondary-action:focus-visible {
-  color: var(--rose-950);
-  border-color: var(--rose-800);
-  transform: translateX(-2px);
-  outline: none;
-}
-
-.archive-image,
-.archive-placeholder {
-  display: block;
-  width: 100%;
-  max-height: 340px;
-  margin: 0 0 18px;
-  border: 1px solid rgba(126, 84, 91, .2);
-  border-radius: 6px;
-  object-fit: cover;
-  background: #d9c2bd;
-  box-shadow: 0 8px 24px rgba(79, 47, 54, .12);
-}
-
-.archive-placeholder {
-  min-height: 230px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  color: var(--rose-800);
-  font-family: "Cormorant Garamond", Georgia, serif;
-}
-
-.archive-placeholder span { font-size: 2rem; color: var(--gold); }
-.archive-placeholder strong { font-size: 1.25rem; font-weight: 600; }
-.archive-placeholder small { max-width: 280px; color: #8a7472; font-family: "Inter", sans-serif; font-size: .68rem; line-height: 1.5; }
