@@ -106,6 +106,8 @@ const pageStatus = document.getElementById("page-status");
 let currentBook = null;
 let spreads = [];
 let currentSpread = 0;
+let mobilePageIndex = 0;
+let mobileTurnDirection = 1;
 
 const esc = (value = "") => String(value).replace(/[&<>'"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));
 
@@ -266,15 +268,54 @@ function residentSpread(category, character) {
   `);
 }
 
+function isMobileBookView() {
+  return window.matchMedia("(max-width: 620px)").matches;
+}
+
 function render() {
+  const mobile = isMobileBookView();
   const current = spreads[currentSpread];
-  leftPage.classList.toggle("photo-page", current?.kind === "photo");
-  rightPage.classList.toggle("photo-page", current?.kind === "photo");
-  leftInner.innerHTML = current?.left || "";
-  rightInner.innerHTML = current?.right || "";
-  pageStatus.textContent = `Page ${currentSpread + 1} of ${spreads.length}`;
-  prevButton.disabled = currentSpread <= 0;
-  nextButton.disabled = currentSpread >= spreads.length - 1;
+
+  if (mobile) {
+    // On phones, each half of a desktop spread becomes its own page.
+    // This keeps the book readable and makes every arrow press advance one page.
+    const totalMobilePages = spreads.length * 2;
+    mobilePageIndex = Math.max(0, Math.min(mobilePageIndex, totalMobilePages - 1));
+    const spreadIndex = Math.floor(mobilePageIndex / 2);
+    const side = mobilePageIndex % 2;
+    currentSpread = spreadIndex;
+    const mobileCurrent = spreads[spreadIndex];
+
+    leftPage.classList.toggle("photo-page", mobileCurrent?.kind === "photo");
+    rightPage.classList.toggle("photo-page", mobileCurrent?.kind === "photo");
+    leftInner.innerHTML = mobileCurrent?.left || "";
+    rightInner.innerHTML = mobileCurrent?.right || "";
+    leftPage.classList.toggle("mobile-active-page", side === 0);
+    rightPage.classList.toggle("mobile-active-page", side === 1);
+    leftPage.classList.toggle("mobile-hidden-page", side !== 0);
+    rightPage.classList.toggle("mobile-hidden-page", side !== 1);
+
+    // Restart the slide animation each time the active mobile page changes.
+    const activePage = side === 0 ? leftPage : rightPage;
+    activePage.classList.remove("mobile-turn-forward", "mobile-turn-back");
+    void activePage.offsetWidth;
+    activePage.classList.add(mobileTurnDirection > 0 ? "mobile-turn-forward" : "mobile-turn-back");
+
+    pageStatus.textContent = `Page ${mobilePageIndex + 1} of ${totalMobilePages}`;
+    prevButton.disabled = mobilePageIndex <= 0;
+    nextButton.disabled = mobilePageIndex >= totalMobilePages - 1;
+  } else {
+    leftPage.classList.toggle("photo-page", current?.kind === "photo");
+    rightPage.classList.toggle("photo-page", current?.kind === "photo");
+    leftInner.innerHTML = current?.left || "";
+    rightInner.innerHTML = current?.right || "";
+    leftPage.classList.remove("mobile-active-page", "mobile-hidden-page", "mobile-turn-forward", "mobile-turn-back");
+    rightPage.classList.remove("mobile-active-page", "mobile-hidden-page", "mobile-turn-forward", "mobile-turn-back");
+    pageStatus.textContent = `Page ${currentSpread + 1} of ${spreads.length}`;
+    prevButton.disabled = currentSpread <= 0;
+    nextButton.disabled = currentSpread >= spreads.length - 1;
+  }
+
   bindPageActions();
 }
 
@@ -324,6 +365,9 @@ function openBook(bookKey, startSpread = 0) {
     currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
   }
 
+  mobilePageIndex = currentSpread * 2;
+  mobileTurnDirection = 1;
+
   reader.classList.add("is-open");
   reader.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -339,6 +383,8 @@ function openWorld(id) {
   spreads = [...buildBook("worlds"), worldSpread(world)];
   currentBook = "worlds";
   currentSpread = 1;
+  mobilePageIndex = 2;
+  mobileTurnDirection = 1;
   render();
 }
 
@@ -349,6 +395,8 @@ function openResidentCharacter(id) {
       spreads = [...buildBook("residents"), residentSpread(category, character)];
       currentBook = "residents";
       currentSpread = 1;
+      mobilePageIndex = 2;
+      mobileTurnDirection = 1;
       render();
       return;
     }
@@ -361,6 +409,8 @@ function openArchive(id) {
   spreads = buildBook("archives");
   currentBook = "archives";
   currentSpread = 1 + index;
+  mobilePageIndex = currentSpread * 2;
+  mobileTurnDirection = 1;
   render();
 }
 
@@ -377,15 +427,48 @@ document.querySelectorAll(".book").forEach(book => {
     openBook(book.dataset.book);
   });
 });
-prevButton.addEventListener("click", () => { if (currentSpread > 0) { currentSpread--; render(); } });
-nextButton.addEventListener("click", () => { if (currentSpread < spreads.length - 1) { currentSpread++; render(); } });
+prevButton.addEventListener("click", () => {
+  if (isMobileBookView()) {
+    if (mobilePageIndex > 0) { mobilePageIndex--; mobileTurnDirection = -1; render(); }
+  } else if (currentSpread > 0) {
+    currentSpread--; mobileTurnDirection = -1; render();
+  }
+});
+nextButton.addEventListener("click", () => {
+  if (isMobileBookView()) {
+    if (mobilePageIndex < spreads.length * 2 - 1) { mobilePageIndex++; mobileTurnDirection = 1; render(); }
+  } else if (currentSpread < spreads.length - 1) {
+    currentSpread++; mobileTurnDirection = 1; render();
+  }
+});
 putAwayButton.addEventListener("click", closeBook);
 reader.addEventListener("click", event => { if (event.target.classList.contains("reader-backdrop")) closeBook(); });
 document.addEventListener("keydown", event => {
   if (!reader.classList.contains("is-open")) return;
   if (event.key === "Escape") closeBook();
-  if (event.key === "ArrowLeft" && currentSpread > 0) { currentSpread--; render(); }
-  if (event.key === "ArrowRight" && currentSpread < spreads.length - 1) { currentSpread++; render(); }
+  if (event.key === "ArrowLeft") {
+    if (isMobileBookView()) {
+      if (mobilePageIndex > 0) { mobilePageIndex--; mobileTurnDirection = -1; render(); }
+    } else if (currentSpread > 0) {
+      currentSpread--; mobileTurnDirection = -1; render();
+    }
+  }
+  if (event.key === "ArrowRight") {
+    if (isMobileBookView()) {
+      if (mobilePageIndex < spreads.length * 2 - 1) { mobilePageIndex++; mobileTurnDirection = 1; render(); }
+    } else if (currentSpread < spreads.length - 1) {
+      currentSpread++; mobileTurnDirection = 1; render();
+    }
+  }
 });
 
 if (location.hash === "#waypoints") openBook("waypoints");
+
+let lastMobileMode = isMobileBookView();
+window.addEventListener("resize", () => {
+  const nowMobile = isMobileBookView();
+  if (nowMobile === lastMobileMode || !reader.classList.contains("is-open")) return;
+  if (nowMobile) mobilePageIndex = currentSpread * 2;
+  lastMobileMode = nowMobile;
+  render();
+});
