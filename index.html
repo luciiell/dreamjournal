@@ -59,35 +59,45 @@
 
       <section class="reader" id="reader" aria-hidden="true">
         <div class="reader-backdrop"></div>
+
+        <button class="page-arrow page-arrow-prev" id="prev-page" type="button" aria-label="Previous page">←</button>
+
         <div class="open-book" role="dialog" aria-modal="true" aria-labelledby="book-title">
-          <div class="book-page left-page">
+          <article class="book-page left-page" id="left-page">
             <div class="page-inner">
-              <span class="page-label">Dreamlands Respiratory</span>
+              <span class="page-label" id="left-label">Dreamlands Respiratory</span>
               <div class="page-ornament">✦</div>
               <h2 id="book-title">Book title</h2>
               <p id="book-subtitle" class="page-subtitle">A volume from the quiet shelves.</p>
               <div class="page-divider"></div>
               <p id="book-description">Select an entry from the index to begin exploring this volume.</p>
+              <div class="page-footer-number" id="left-page-number"></div>
             </div>
-          </div>
+          </article>
 
-          <div class="book-page right-page">
+          <article class="book-page right-page" id="right-page">
             <div class="page-inner">
-              <span class="page-label">Index</span>
-              <h3>Contents</h3>
-              <ol id="book-index" class="book-index"></ol>
-              <p class="page-note">Each title is a doorway. Follow the one that calls to you.</p>
+              <span class="page-label" id="right-label">Contents</span>
+              <h3 id="right-heading">Contents</h3>
+              <div id="page-content" class="page-content"></div>
+              <div class="page-footer-number" id="right-page-number"></div>
             </div>
-          </div>
+          </article>
         </div>
 
-        <button class="put-away" id="put-away" type="button">Put this book away</button>
+        <button class="page-arrow page-arrow-next" id="next-page" type="button" aria-label="Next page">→</button>
+
+        <div class="reader-controls">
+          <span class="page-status" id="page-status" aria-live="polite">Page 1 of 6</span>
+          <button class="put-away" id="put-away" type="button">Put this book away</button>
+          <span class="keyboard-hint">← → to turn pages · Esc to close</span>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>✦</span>
-      <span>Enter the dream, wake up later.</span>
+      <span>Enter softly. Leave curious.</span>
       <span>✦</span>
     </footer>
   </div>
