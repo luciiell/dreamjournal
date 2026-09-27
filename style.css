@@ -661,3 +661,90 @@ h1 {
   .reader-controls .put-away:hover,
   .reader-controls .put-away:focus-visible { transform: translateY(-2px); }
 }
+
+
+/* --- Book-specific layouts --- */
+.contents-link {
+  display: block;
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(73,56,58,.18);
+  background: transparent;
+  color: var(--rose-800);
+  text-align: left;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: color .2s, padding-left .2s;
+}
+.contents-link:hover,
+.contents-link:focus-visible {
+  color: var(--rose-950);
+  padding-left: 8px;
+  outline: none;
+}
+
+.waypoint-link-item { margin-bottom: 12px; }
+.waypoint-link {
+  position: relative;
+  display: block;
+  padding: 11px 30px 11px 0;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(73,56,58,.18);
+  transition: color .2s, transform .2s;
+}
+.waypoint-link:hover { color: var(--rose-700); transform: translateX(4px); }
+.waypoint-link span { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.18rem; font-weight: 600; }
+.waypoint-link small { display: block; margin-top: 3px; font-size: .76rem; line-height: 1.45; color: rgba(73,56,58,.72); }
+.waypoint-link b { position: absolute; right: 3px; top: 18px; font-weight: 400; color: var(--rose-700); }
+
+.world-page-mode .left-page .page-inner { padding-right: clamp(22px, 3vw, 42px); }
+.world-page-mode .right-page .page-inner { padding: clamp(20px, 3vw, 34px); }
+.world-page-mode #right-heading { display: none; }
+.world-visual { display: flex; flex-direction: column; height: 100%; justify-content: center; gap: 18px; }
+.world-image-frame {
+  position: relative;
+  width: 100%;
+  height: min(52vh, 310px);
+  min-height: 190px;
+  overflow: hidden;
+  border: 1px solid rgba(73,56,58,.2);
+  background: linear-gradient(135deg, rgba(220,177,184,.55), rgba(248,240,232,.9));
+  box-shadow: inset 0 0 30px rgba(73,56,58,.08);
+}
+.world-image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.world-image-placeholder { height: 100%; display: grid; place-items: center; color: rgba(73,56,58,.5); font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.1rem; font-style: italic; }
+.enter-dream-button {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  border: 1px solid var(--rose-700);
+  background: var(--rose-800);
+  color: var(--cream);
+  text-align: center;
+  text-decoration: none;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.08rem;
+  letter-spacing: .04em;
+  transition: background .2s, transform .2s;
+}
+.enter-dream-button:hover { background: var(--rose-950); transform: translateY(-2px); }
+
+.archive-cover-page { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px; border: 1px solid rgba(73,56,58,.18); background: linear-gradient(145deg, rgba(220,177,184,.45), rgba(248,240,232,.55)); }
+.archive-small-title { font-size: .62rem; letter-spacing: .35em; color: var(--rose-800); }
+.archive-cover-page h2 { margin: 18px 0; font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 500; color: var(--rose-950); }
+.archive-cover-mark { margin-top: 24px; color: var(--gold); font-size: 1.2rem; }
+.archive-index-page { height: 100%; padding: 20px 8px; overflow: auto; }
+.archive-index-page h3 { margin: 10px 0 24px; font-size: 2rem; color: var(--rose-900); }
+.archive-photo-page { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #eee3d7; padding: 10px; }
+.archive-photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.archive-index-link { font-size: 1rem; }
+
+@media (max-width: 800px) {
+  .world-page-mode .left-page .page-inner,
+  .world-page-mode .right-page .page-inner { padding: 18px; }
+  .world-image-frame { height: 220px; }
+}

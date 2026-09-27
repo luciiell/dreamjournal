@@ -11,249 +11,267 @@ const books = {
       { title: "A Note for New Visitors", text: "Do not be afraid of getting lost. Getting lost is one of the oldest methods of finding somewhere new. Take note of landmarks, be courteous to residents, and always leave a little room for wonder." }
     ]
   },
+
+  // WAYPOINTS: one page only. Add/remove links in this array.
   waypoints: {
     title: "Dreamland Waypoints",
-    subtitle: "Landmarks for those who have lost the road.",
-    pages: [
-      { title: "Contents", type: "contents" },
-      { title: "The Lantern Stair", text: "A narrow staircase lit by warm lanterns. It has been found beneath theatres, behind kitchens, and once in the middle of a field. Count the steps only if you want to arrive somewhere different." },
-      { title: "The Sleeping Station", text: "A railway station where every clock shows a different hour. Trains arrive quietly and leave even more quietly. The destination boards are often more helpful than the tickets." },
-      { title: "The Rosewater Bridge", text: "An arched bridge spanning a river that reflects memories rather than faces. Travelers often cross it carrying something they did not realize they had brought with them." },
-      { title: "The House at the End of the Path", text: "There is always a path to this house, though it is rarely the same path twice. Someone inside is usually waiting. Whether they are waiting for you is another question." },
-      { title: "Unmarked Crossings", text: "Some waypoints have no name at all. A change in weather, a sudden silence, or a familiar object in an unfamiliar place can be enough to mark the crossing." }
+    subtitle: "A collection of doors, paths, and places beyond the waking world.",
+    links: [
+      { title: "The Lantern Stair", description: "A narrow staircase lit by warm lanterns.", url: "https://example.com" },
+      { title: "The Sleeping Station", description: "A railway station where every clock shows a different hour.", url: "https://example.com" },
+      { title: "The Rosewater Bridge", description: "A bridge spanning a river that reflects memories rather than faces.", url: "https://example.com" },
+      { title: "The House at the End of the Path", description: "There is always a path to this house, though it is rarely the same path twice.", url: "https://example.com" }
     ]
   },
+
+  // WORLDS: add another object to worlds to create another world page.
   worlds: {
     title: "Dreamland Worlds",
     subtitle: "A catalogue of places that should not exist.",
-    pages: [
-      { title: "Contents", type: "contents" },
-      { title: "The Pale Coast", text: "An endless shoreline beneath a pearl-colored sky. The tide arrives with whispers, and footprints sometimes continue long after the person who made them has gone." },
-      { title: "The Glass Forest", text: "Trees of translucent bark grow beneath a silver moon. Nothing rustles here. Instead, the forest rings softly whenever the wind changes direction." },
-      { title: "The City Beneath the Moon", text: "A city of narrow streets and tall windows, built beneath a moon so large it seems close enough to touch. Its residents leave their doors open after midnight." },
-      { title: "The Endless Garden", text: "A garden whose paths rearrange themselves according to the visitor's memories. Every flower has a name, though very few can be translated into waking languages." },
-      { title: "Worlds Yet Unnamed", text: "Beyond the known worlds are places still waiting to be noticed. Their first visitors may be the ones who give them their names." }
+    worlds: [
+      {
+        title: "The Pale Coast",
+        text: "An endless shoreline beneath a pearl-colored sky. The tide arrives with whispers, and footprints sometimes continue long after the person who made them has gone.",
+        image: "images/worlds/pale-coast.jpg",
+        mapUrl: "https://example.com"
+      },
+      {
+        title: "The Glass Forest",
+        text: "Trees of translucent bark grow beneath a silver moon. Nothing rustles here. Instead, the forest rings softly whenever the wind changes direction.",
+        image: "images/worlds/glass-forest.jpg",
+        mapUrl: "https://example.com"
+      }
     ]
   },
+
   residents: {
     title: "Dreamland Residents",
-    subtitle: "A modest directory of those who dwell there.",
+    subtitle: "A directory of those who dwell there.",
     pages: [
       { title: "Contents", type: "contents" },
       { title: "The Ferrymen", text: "Quiet figures who operate boats along dream-rivers. They rarely speak, but they always seem to know which shore a traveler is trying to reach." },
       { title: "The Librarians", text: "Keepers of books that contain memories, possible futures, and stories that have not yet been told. They prefer questions to answers." },
       { title: "The Night Gardeners", text: "They tend flowers that bloom only while someone is dreaming. Their tools are made from old keys, silver spoons, and pieces of forgotten weather." },
-      { title: "The Housekeepers", text: "They maintain the rooms between dreams. A Housekeeper may appear ordinary until you notice they have been carrying the same key for several hundred years." },
-      { title: "Those Who Have Forgotten", text: "Some residents once arrived as dreamers and simply never found the way back. They have built lives here, and not all of them wish to be remembered." }
+      { title: "The Housekeepers", text: "They maintain the rooms between dreams. A Housekeeper may appear ordinary until you notice they have been carrying the same key for several hundred years." }
     ]
   },
+
+  // ARCHIVES: cover + index, followed by image-only photo spreads.
   archives: {
     title: "Dreamland Archives",
     subtitle: "A visual record of things worth remembering.",
-    // Add more photo spreads here. Each spread can contain one or two images.
-    // Replace the example paths with your own files, e.g. images/archives/dream-01.jpg
     photoSpreads: [
-      {
-        left: "images/archives/photo-01.jpg",
-        right: "images/archives/photo-02.jpg"
-      },
-      {
-        left: "images/archives/photo-03.jpg",
-        right: "images/archives/photo-04.jpg"
-      },
-      {
-        left: "images/archives/photo-05.jpg",
-        right: "images/archives/photo-06.jpg"
-      }
+      { left: "images/archives/photo-01.jpg", right: "images/archives/photo-02.jpg" },
+      { left: "images/archives/photo-03.jpg", right: "images/archives/photo-04.jpg" },
+      { left: "images/archives/photo-05.jpg", right: "images/archives/photo-06.jpg" }
     ]
   }
 };
 
 const reader = document.getElementById("reader");
-const bookTitle = document.getElementById("book-title");
-const bookSubtitle = document.getElementById("book-subtitle");
-const bookDescription = document.getElementById("book-description");
-const bookIndex = document.getElementById("page-content");
-const rightHeading = document.getElementById("right-heading");
-const leftLabel = document.getElementById("left-label");
-const rightLabel = document.getElementById("right-label");
-const leftPageNumber = document.getElementById("left-page-number");
-const rightPageNumber = document.getElementById("right-page-number");
-const pageStatus = document.getElementById("page-status");
 const prevPage = document.getElementById("prev-page");
 const nextPage = document.getElementById("next-page");
 const putAway = document.getElementById("put-away");
+const pageStatus = document.getElementById("page-status");
 const bookButtons = document.querySelectorAll(".book");
 
 let activeBook = null;
 let currentPage = 0;
 let lastFocusedBook = null;
 
-function renderContents(book) {
-  bookIndex.innerHTML = "";
-
-  if (book.archiveIndex) {
-    book.archiveIndex.forEach((entry, index) => {
-      const li = document.createElement("li");
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = entry;
-      button.addEventListener("click", () => goToPage(index + 1));
-      li.appendChild(button);
-      bookIndex.appendChild(li);
-    });
-    return;
-  }
-
-  book.pages.slice(1).forEach((page, index) => {
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = page.title;
-    button.addEventListener("click", () => goToPage(index + 1));
-    li.appendChild(button);
-    bookIndex.appendChild(li);
-  });
-}
-
-function renderArchiveSpread(book, spreadIndex) {
-  const spread = book.photoSpreads[spreadIndex];
-  if (!spread) return;
-
-  document.querySelector(".left-page .page-inner").innerHTML = `
-    <div class="photo-page-frame">
-      <img class="archive-photo" src="${spread.left}" alt="" onerror="this.classList.add('image-missing')">
-      <div class="archive-photo-placeholder" aria-hidden="true"></div>
-    </div>
-  `;
-
-  document.querySelector(".right-page .page-inner").innerHTML = `
-    <div class="photo-page-frame">
-      <img class="archive-photo" src="${spread.right}" alt="" onerror="this.classList.add('image-missing')">
-      <div class="archive-photo-placeholder" aria-hidden="true"></div>
-    </div>
-  `;
-}
-
-function restoreStandardPages() {
+function standardMarkup() {
   document.querySelector(".left-page .page-inner").innerHTML = `
     <span class="page-label" id="left-label">Dreamlands Respiratory</span>
     <div class="page-ornament">✦</div>
     <h2 id="book-title">Book title</h2>
-    <p id="book-subtitle" class="page-subtitle">A volume from the quiet shelves.</p>
+    <p id="book-subtitle" class="page-subtitle"></p>
     <div class="page-divider"></div>
-    <p id="book-description">Select an entry from the index to begin exploring this volume.</p>
-    <div class="page-footer-number" id="left-page-number"></div>
-  `;
+    <p id="book-description"></p>
+    <div class="page-footer-number" id="left-page-number"></div>`;
   document.querySelector(".right-page .page-inner").innerHTML = `
     <span class="page-label" id="right-label">Contents</span>
     <h3 id="right-heading">Contents</h3>
     <div id="page-content" class="page-content"></div>
-    <div class="page-footer-number" id="right-page-number"></div>
-  `;
+    <div class="page-footer-number" id="right-page-number"></div>`;
 }
 
-function renderPage() {
-  const book = books[activeBook];
-  if (!book) return;
+function archiveMarkup() {
+  document.querySelector(".left-page .page-inner").innerHTML = `
+    <div class="archive-cover-page">
+      <span class="archive-small-title">THE</span>
+      <h2 id="archive-cover-title">Dreamland Archives</h2>
+      <span class="archive-small-title">A VISUAL RECORD</span>
+      <div class="archive-cover-mark">✦</div>
+    </div>`;
+  document.querySelector(".right-page .page-inner").innerHTML = `
+    <div class="archive-index-page">
+      <span class="page-label">Dreamland Archives</span>
+      <h3>Contents</h3>
+      <div id="archive-index" class="page-content"></div>
+    </div>`;
+}
 
-  const isArchive = activeBook === "archives";
+function archivePhotoMarkup(spread) {
+  document.querySelector(".left-page .page-inner").innerHTML = `<div class="archive-photo-page"><img class="archive-photo" src="${spread.left}" alt=""></div>`;
+  document.querySelector(".right-page .page-inner").innerHTML = `<div class="archive-photo-page"><img class="archive-photo" src="${spread.right}" alt=""></div>`;
+}
 
-  if (isArchive && currentPage > 0) {
-    renderArchiveSpread(book, currentPage - 1);
-    pageStatus.textContent = `Photo spread ${currentPage} of ${book.photoSpreads.length}`;
-    prevPage.disabled = currentPage === 0;
-    nextPage.disabled = currentPage === book.photoSpreads.length;
-    return;
-  }
-
-  if (isArchive) {
-    restoreStandardPages();
-  }
-
-  // Rebind references after restoring the standard page markup.
-  const titleEl = document.getElementById("book-title");
-  const subtitleEl = document.getElementById("book-subtitle");
-  const descriptionEl = document.getElementById("book-description");
-  const indexEl = document.getElementById("page-content");
-  const headingEl = document.getElementById("right-heading");
-  const leftLabelEl = document.getElementById("left-label");
-  const rightLabelEl = document.getElementById("right-label");
-  const leftNumberEl = document.getElementById("left-page-number");
-  const rightNumberEl = document.getElementById("right-page-number");
-
-  const pageList = isArchive ? [{ title: "Contents", type: "contents" }] : book.pages;
-  const page = pageList[currentPage];
-  const isContents = currentPage === 0;
-
-  leftLabelEl.textContent = book.title;
-  rightLabelEl.textContent = isContents ? "Contents" : "Dreamlands Respiratory";
-  leftNumberEl.textContent = currentPage === 0 ? "" : currentPage;
-  rightNumberEl.textContent = isContents ? "" : currentPage + 1;
-
-  if (isArchive) {
-    pageStatus.textContent = "Front cover & contents";
-    titleEl.textContent = book.title;
-    subtitleEl.textContent = book.subtitle;
-    descriptionEl.textContent = "";
-    headingEl.textContent = "Contents";
-    indexEl.innerHTML = "";
-    book.photoSpreads.forEach((_, index) => {
-      const li = document.createElement("li");
+function renderArchive() {
+  const book = books.archives;
+  if (currentPage === 0) {
+    archiveMarkup();
+    const index = document.getElementById("archive-index");
+    book.photoSpreads.forEach((_, i) => {
       const button = document.createElement("button");
+      button.className = "contents-link archive-index-link";
       button.type = "button";
-      button.textContent = `Photo spread ${index + 1}`;
-      button.addEventListener("click", () => goToPage(index + 1));
-      li.appendChild(button);
-      indexEl.appendChild(li);
+      button.textContent = `Photograph spread ${i + 1}`;
+      button.addEventListener("click", () => goToPage(i + 1));
+      index.appendChild(button);
     });
+    pageStatus.textContent = "Cover & contents";
     prevPage.disabled = true;
     nextPage.disabled = book.photoSpreads.length === 0;
     return;
   }
+  archivePhotoMarkup(book.photoSpreads[currentPage - 1]);
+  pageStatus.textContent = `Photo spread ${currentPage} of ${book.photoSpreads.length}`;
+  prevPage.disabled = currentPage === 0;
+  nextPage.disabled = currentPage === book.photoSpreads.length;
+}
 
-  pageStatus.textContent = `Page ${currentPage + 1} of ${book.pages.length}`;
+function renderWaypoints() {
+  standardMarkup();
+  const book = books.waypoints;
+  document.getElementById("left-label").textContent = "Dreamland Waypoints";
+  document.getElementById("book-title").textContent = book.title;
+  document.getElementById("book-subtitle").textContent = book.subtitle;
+  document.getElementById("book-description").textContent = "Each entry below is an external link. There are no internal waypoint pages.";
+  document.getElementById("right-label").textContent = "Links";
+  document.getElementById("right-heading").textContent = "Waypoints";
+  const list = document.getElementById("page-content");
+  book.links.forEach(link => {
+    const item = document.createElement("div");
+    item.className = "waypoint-link-item";
+    item.innerHTML = `<a class="waypoint-link" href="${link.url}" target="_blank" rel="noopener noreferrer"><span>${link.title}</span><small>${link.description}</small><b>↗</b></a>`;
+    list.appendChild(item);
+  });
+  pageStatus.textContent = "One page";
+  prevPage.disabled = true;
+  nextPage.disabled = true;
+}
 
-  if (isContents) {
-    titleEl.textContent = book.title;
-    subtitleEl.textContent = book.subtitle;
-    descriptionEl.textContent = "Choose a chapter from the contents, or use the arrows to turn the pages.";
-    headingEl.textContent = "Contents";
-    indexEl.innerHTML = "";
-    renderContents(book);
+function renderWorlds() {
+  standardMarkup();
+  const book = books.worlds;
+  const titleEl = document.getElementById("book-title");
+  const subtitleEl = document.getElementById("book-subtitle");
+  const descriptionEl = document.getElementById("book-description");
+  const headingEl = document.getElementById("right-heading");
+  const contentEl = document.getElementById("page-content");
+  document.getElementById("left-label").textContent = book.title;
+  document.getElementById("right-label").textContent = "Index";
+  titleEl.textContent = book.title;
+  subtitleEl.textContent = book.subtitle;
+  descriptionEl.textContent = "Choose a world to open its entry.";
+  headingEl.textContent = "Worlds";
+  book.worlds.forEach((world, i) => {
+    const button = document.createElement("button");
+    button.className = "contents-link";
+    button.type = "button";
+    button.textContent = world.title;
+    button.addEventListener("click", () => goToPage(i + 1));
+    contentEl.appendChild(button);
+  });
+  pageStatus.textContent = `Index · ${book.worlds.length} worlds`;
+  prevPage.disabled = true;
+  nextPage.disabled = book.worlds.length === 0;
+}
+
+function renderWorldPage(world) {
+  standardMarkup();
+  document.querySelector(".open-book").classList.add("world-page-mode");
+  document.getElementById("left-label").textContent = "Dreamland Worlds";
+  document.getElementById("book-title").textContent = world.title;
+  document.getElementById("book-subtitle").textContent = "World entry";
+  document.getElementById("book-description").textContent = world.text;
+  document.getElementById("right-label").textContent = world.title;
+  document.getElementById("right-heading").textContent = "";
+  document.getElementById("right-page-number").textContent = currentPage + 1;
+  document.getElementById("page-content").innerHTML = `
+    <div class="world-visual">
+      <div class="world-image-frame">
+        <img src="${world.image}" alt="" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;">
+        <div class="world-image-placeholder" hidden>Image placeholder</div>
+      </div>
+      <a class="enter-dream-button" href="${world.mapUrl}" target="_blank" rel="noopener noreferrer">Enter the dreamland</a>
+    </div>`;
+  pageStatus.textContent = `World ${currentPage} of ${books.worlds.worlds.length}`;
+  prevPage.disabled = currentPage === 0;
+  nextPage.disabled = currentPage === books.worlds.worlds.length;
+}
+
+function renderStandardBook(book) {
+  standardMarkup();
+  const page = book.pages[currentPage];
+  const contents = currentPage === 0;
+  document.getElementById("left-label").textContent = book.title;
+  document.getElementById("right-label").textContent = contents ? "Contents" : book.title;
+  document.getElementById("book-title").textContent = book.title;
+  document.getElementById("book-subtitle").textContent = book.subtitle;
+  document.getElementById("book-description").textContent = contents ? "Choose an entry from the contents, or use the arrows to turn the pages." : page.text;
+  document.getElementById("right-heading").textContent = contents ? "Contents" : page.title;
+  document.getElementById("left-page-number").textContent = contents ? "" : currentPage;
+  document.getElementById("right-page-number").textContent = contents ? "" : currentPage + 1;
+  const content = document.getElementById("page-content");
+  if (contents) {
+    book.pages.slice(1).forEach((entry, i) => {
+      const button = document.createElement("button");
+      button.className = "contents-link";
+      button.type = "button";
+      button.textContent = entry.title;
+      button.addEventListener("click", () => goToPage(i + 1));
+      content.appendChild(button);
+    });
   } else {
-    titleEl.textContent = page.title;
-    subtitleEl.textContent = book.subtitle;
-    descriptionEl.textContent = page.text;
-    headingEl.textContent = page.title;
-    indexEl.innerHTML = `<p class="page-continuation">${page.text}</p>`;
+    content.innerHTML = `<p class="page-continuation">${page.text}</p>`;
   }
-
+  pageStatus.textContent = `Page ${currentPage + 1} of ${book.pages.length}`;
   prevPage.disabled = currentPage === 0;
   nextPage.disabled = currentPage === book.pages.length - 1;
 }
+
+function renderPage() {
+  if (!activeBook) return;
+  document.querySelector(".open-book").classList.remove("world-page-mode");
+  if (activeBook === "archives") return renderArchive();
+  if (activeBook === "waypoints") return renderWaypoints();
+  if (activeBook === "worlds") {
+    if (currentPage === 0) return renderWorlds();
+    return renderWorldPage(books.worlds.worlds[currentPage - 1]);
+  }
+  return renderStandardBook(books[activeBook]);
+}
+
 function goToPage(pageNumber) {
   if (!activeBook) return;
-  const totalPages = books[activeBook].pages.length;
-  currentPage = Math.max(0, Math.min(pageNumber, totalPages - 1));
+  let max;
+  if (activeBook === "archives") max = books.archives.photoSpreads.length;
+  else if (activeBook === "waypoints") max = 0;
+  else if (activeBook === "worlds") max = books.worlds.worlds.length;
+  else max = books[activeBook].pages.length - 1;
+  currentPage = Math.max(0, Math.min(pageNumber, max));
   renderPage();
 }
 
-function next() {
-  if (!activeBook) return;
-  goToPage(currentPage + 1);
-}
-
-function previous() {
-  if (!activeBook) return;
-  goToPage(currentPage - 1);
-}
+function next() { goToPage(currentPage + 1); }
+function previous() { goToPage(currentPage - 1); }
 
 function openBook(bookKey) {
   if (!books[bookKey]) return;
-
   activeBook = bookKey;
   currentPage = 0;
+  lastFocusedBook = document.querySelector(`[data-book="${bookKey}"]`);
   document.querySelector(".open-book").classList.toggle("archive-mode", bookKey === "archives");
   renderPage();
   reader.classList.add("is-open");
@@ -268,37 +286,19 @@ function closeBook() {
   document.body.style.overflow = "";
   activeBook = null;
   currentPage = 0;
-  document.querySelector(".open-book").classList.remove("archive-mode");
+  document.querySelector(".open-book").classList.remove("archive-mode", "world-page-mode");
   if (lastFocusedBook) lastFocusedBook.focus();
 }
 
-bookButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    lastFocusedBook = button;
-    openBook(button.dataset.book);
-  });
-});
-
+bookButtons.forEach(button => button.addEventListener("click", () => openBook(button.dataset.book)));
 prevPage.addEventListener("click", previous);
 nextPage.addEventListener("click", next);
 putAway.addEventListener("click", closeBook);
 reader.querySelector(".reader-backdrop").addEventListener("click", closeBook);
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", event => {
   if (!reader.classList.contains("is-open")) return;
-
-  if (event.key === "Escape") {
-    closeBook();
-    return;
-  }
-
-  if (event.key === "ArrowRight") {
-    event.preventDefault();
-    next();
-  }
-
-  if (event.key === "ArrowLeft") {
-    event.preventDefault();
-    previous();
-  }
+  if (event.key === "Escape") return closeBook();
+  if (event.key === "ArrowRight") { event.preventDefault(); next(); }
+  if (event.key === "ArrowLeft") { event.preventDefault(); previous(); }
 });
