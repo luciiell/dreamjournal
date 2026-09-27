@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Welcome to the Dreamlands Respiratory — a quiet archive of dreamland places, people, worlds, waypoints, and records.">
+  <meta name="description" content="Welcome to the Dreamlands Respiratory.">
   <title>Welcome to the Dreamlands Respiratory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,79 +29,42 @@
         <div class="bookshelf" aria-label="Dreamlands books">
           <div class="shelf-top"></div>
           <div class="books">
-            <button class="book book-1" data-book="about" aria-label="Open About the Dreamlands">
-              <span class="book-spine-title">About the Dreamlands</span>
-              <span class="book-number">I</span>
-            </button>
-            <button class="book book-2" data-book="waypoints" aria-label="Open Dreamland Waypoints">
-              <span class="book-spine-title">Dreamland Waypoints</span>
-              <span class="book-number">II</span>
-            </button>
-            <button class="book book-3" data-book="worlds" aria-label="Open Dreamland Worlds">
-              <span class="book-spine-title">Dreamland Worlds</span>
-              <span class="book-number">III</span>
-            </button>
-            <button class="book book-4" data-book="residents" aria-label="Open Dreamland Residents">
-              <span class="book-spine-title">Dreamland Residents</span>
-              <span class="book-number">IV</span>
-            </button>
-            <button class="book book-5" data-book="archives" aria-label="Open Dreamland Archives">
-              <span class="book-spine-title">Dreamland Archives</span>
-              <span class="book-number">V</span>
-            </button>
+            <button class="book book-1" data-book="about" type="button" aria-label="Open About the Dreamlands"><span class="book-spine-title">About the Dreamlands</span><span class="book-number">I</span></button>
+            <button class="book book-2" data-book="waypoints" type="button" aria-label="Open Dreamland Waypoints"><span class="book-spine-title">Dreamland Waypoints</span><span class="book-number">II</span></button>
+            <button class="book book-3" data-book="worlds" type="button" aria-label="Open Dreamland Worlds"><span class="book-spine-title">Dreamland Worlds</span><span class="book-number">III</span></button>
+            <button class="book book-4" data-book="residents" type="button" aria-label="Open Dreamland Residents"><span class="book-spine-title">Dreamland Residents</span><span class="book-number">IV</span></button>
+            <button class="book book-5" data-book="archives" type="button" aria-label="Open Dreamland Archives"><span class="book-spine-title">Dreamland Archives</span><span class="book-number">V</span></button>
           </div>
           <div class="shelf-front"></div>
           <div class="shelf-shadow"></div>
         </div>
-
         <p class="library-hint">Hover over a book to pull it from the shelf · Click to open</p>
       </section>
 
       <section class="reader" id="reader" aria-hidden="true">
         <div class="reader-backdrop"></div>
-
         <button class="page-arrow page-arrow-prev" id="prev-page" type="button" aria-label="Previous page">←</button>
 
         <div class="open-book" role="dialog" aria-modal="true" aria-labelledby="book-title">
           <article class="book-page left-page" id="left-page">
-            <div class="page-inner">
-              <span class="page-label" id="left-label">Dreamlands Respiratory</span>
-              <div class="page-ornament">✦</div>
-              <h2 id="book-title">Book title</h2>
-              <p id="book-subtitle" class="page-subtitle">A volume from the quiet shelves.</p>
-              <div class="page-divider"></div>
-              <p id="book-description">Select an entry from the index to begin exploring this volume.</p>
-              <div class="page-footer-number" id="left-page-number"></div>
-            </div>
+            <div class="page-inner" id="left-inner"></div>
           </article>
-
           <article class="book-page right-page" id="right-page">
-            <div class="page-inner">
-              <span class="page-label" id="right-label">Contents</span>
-              <h3 id="right-heading">Contents</h3>
-              <div id="page-content" class="page-content"></div>
-              <div class="page-footer-number" id="right-page-number"></div>
-            </div>
+            <div class="page-inner" id="right-inner"></div>
           </article>
         </div>
 
         <button class="page-arrow page-arrow-next" id="next-page" type="button" aria-label="Next page">→</button>
-
         <div class="reader-controls">
-          <span class="page-status" id="page-status" aria-live="polite">Page 1 of 6</span>
+          <span class="page-status" id="page-status" aria-live="polite">Page 1 of 1</span>
           <button class="put-away" id="put-away" type="button">Put this book away</button>
           <span class="keyboard-hint">← → to turn pages · Esc to close</span>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <span>✦</span>
-      <span>Enter softly. Leave curious.</span>
-      <span>✦</span>
-    </footer>
+    <footer class="site-footer"><span>✦</span><span>Enter softly. Leave curious.</span><span>✦</span></footer>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>

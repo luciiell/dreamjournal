@@ -1,304 +1,337 @@
-const books = {
+/*
+  DREAMLANDS CONTENT
+  ------------------------------------------------------------
+  Edit the arrays below to add your own material.
+
+  Waypoints: one spread only; every item is an external link.
+  Worlds: index -> individual world spread.
+  Residents: index -> individual character spread.
+  Archives: cover + contents spread -> image-only photo spreads.
+*/
+
+const siteData = {
   about: {
     title: "About the Dreamlands",
-    subtitle: "A field guide to the place between places.",
-    pages: [
-      { title: "Contents", type: "contents" },
-      { title: "The Threshold", text: "Every journey into the Dreamlands begins at a threshold. It may be a familiar door, a staircase that was not there yesterday, or the moment just before a dream settles into focus." },
-      { title: "A Brief History", text: "The Dreamlands have no single history. Their stories overlap, contradict one another, and sometimes remember things that never happened while forgetting things that did." },
-      { title: "The Geography of Sleep", text: "Distance in the Dreamlands is measured less by miles than by feeling. A remembered song may be closer than the street outside your window, while a place you know well can take years to reach." },
-      { title: "Rules of the Dreamlands", text: "Some rules are reliable: doors tend to lead somewhere, names carry weight, and the landscape notices when it is being observed. Other rules are still being written." },
-      { title: "A Note for New Visitors", text: "Do not be afraid of getting lost. Getting lost is one of the oldest methods of finding somewhere new. Take note of landmarks, be courteous to residents, and always leave a little room for wonder." }
-    ]
+    subtitle: "A small guide to the place beyond waking.",
+    body: "This is where you can write the introduction, history, rules, mythology, or anything else that explains what the Dreamlands are.",
   },
 
-  // WAYPOINTS: one page only. Add/remove links in this array.
   waypoints: {
     title: "Dreamland Waypoints",
-    subtitle: "A collection of doors, paths, and places beyond the waking world.",
+    subtitle: "A directory of places worth finding.",
     links: [
-      { title: "The Lantern Stair", description: "A narrow staircase lit by warm lanterns.", url: "https://example.com" },
-      { title: "The Sleeping Station", description: "A railway station where every clock shows a different hour.", url: "https://example.com" },
-      { title: "The Rosewater Bridge", description: "A bridge spanning a river that reflects memories rather than faces.", url: "https://example.com" },
-      { title: "The House at the End of the Path", description: "There is always a path to this house, though it is rarely the same path twice.", url: "https://example.com" }
-    ]
+      { name: "Waypoint One", description: "Replace this with your waypoint.", url: "https://example.com/" },
+      { name: "Waypoint Two", description: "Replace this with your waypoint.", url: "https://example.com/" },
+      { name: "Waypoint Three", description: "Replace this with your waypoint.", url: "https://example.com/" },
+    ],
   },
 
-  // WORLDS: add another object to worlds to create another world page.
-  worlds: {
-    title: "Dreamland Worlds",
-    subtitle: "A catalogue of places that should not exist.",
-    worlds: [
-      {
-        title: "The Pale Coast",
-        text: "An endless shoreline beneath a pearl-colored sky. The tide arrives with whispers, and footprints sometimes continue long after the person who made them has gone.",
-        image: "images/worlds/pale-coast.jpg",
-        mapUrl: "https://example.com"
-      },
-      {
-        title: "The Glass Forest",
-        text: "Trees of translucent bark grow beneath a silver moon. Nothing rustles here. Instead, the forest rings softly whenever the wind changes direction.",
-        image: "images/worlds/glass-forest.jpg",
-        mapUrl: "https://example.com"
-      }
-    ]
-  },
+  worlds: [
+    {
+      id: "pale-coast",
+      name: "The Pale Coast",
+      description: "A quiet shore where the sea seems to remember every dream that has ever touched it. Replace this text with the information for your world.",
+      image: "",
+      mapUrl: "https://example.com/",
+    },
+    {
+      id: "glass-forest",
+      name: "The Glass Forest",
+      description: "A forest of translucent trees, distant lights, and paths that do not always lead back the way they came. Replace this text with the information for your world.",
+      image: "",
+      mapUrl: "https://example.com/",
+    },
+  ],
 
-  residents: {
-    title: "Dreamland Residents",
-    subtitle: "A directory of those who dwell there.",
-    pages: [
-      { title: "Contents", type: "contents" },
-      { title: "The Ferrymen", text: "Quiet figures who operate boats along dream-rivers. They rarely speak, but they always seem to know which shore a traveler is trying to reach." },
-      { title: "The Librarians", text: "Keepers of books that contain memories, possible futures, and stories that have not yet been told. They prefer questions to answers." },
-      { title: "The Night Gardeners", text: "They tend flowers that bloom only while someone is dreaming. Their tools are made from old keys, silver spoons, and pieces of forgotten weather." },
-      { title: "The Housekeepers", text: "They maintain the rooms between dreams. A Housekeeper may appear ordinary until you notice they have been carrying the same key for several hundred years." }
-    ]
-  },
+  residents: [
+    {
+      id: "dreamers",
+      name: "Dreamers",
+      description: "Those who wander the Dreamlands while still carrying traces of waking life.",
+      characters: [
+        { id: "dreamer-one", name: "Dreamer One", description: "Character information goes here. Add as much or as little as you like." },
+        { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident." },
+      ],
+    },
+    {
+      id: "guides",
+      name: "Guides",
+      description: "Residents who know the paths, crossings, and hidden rules of the Dreamlands.",
+      characters: [
+        { id: "guide-one", name: "Guide One", description: "Character information goes here." },
+      ],
+    },
+    {
+      id: "strangers",
+      name: "Strangers",
+      description: "Unfamiliar residents whose stories have not yet been fully recorded.",
+      characters: [
+        { id: "stranger-one", name: "Stranger One", description: "Character information goes here." },
+      ],
+    },
+  ],
 
-  // ARCHIVES: cover + index, followed by image-only photo spreads.
   archives: {
     title: "Dreamland Archives",
     subtitle: "A visual record of things worth remembering.",
     photoSpreads: [
-      { left: "images/archives/photo-01.jpg", right: "images/archives/photo-02.jpg" },
-      { left: "images/archives/photo-03.jpg", right: "images/archives/photo-04.jpg" },
-      { left: "images/archives/photo-05.jpg", right: "images/archives/photo-06.jpg" }
-    ]
-  }
+      { id: "spread-1", left: "images/archives/dream-01.jpg", right: "images/archives/dream-02.jpg", label: "Photo spread 1" },
+      { id: "spread-2", left: "images/archives/dream-03.jpg", right: "images/archives/dream-04.jpg", label: "Photo spread 2" },
+      { id: "spread-3", left: "images/archives/dream-05.jpg", right: "images/archives/dream-06.jpg", label: "Photo spread 3" },
+    ],
+  },
 };
 
 const reader = document.getElementById("reader");
-const prevPage = document.getElementById("prev-page");
-const nextPage = document.getElementById("next-page");
-const putAway = document.getElementById("put-away");
+const leftInner = document.getElementById("left-inner");
+const rightInner = document.getElementById("right-inner");
+const leftPage = document.getElementById("left-page");
+const rightPage = document.getElementById("right-page");
+const prevButton = document.getElementById("prev-page");
+const nextButton = document.getElementById("next-page");
+const putAwayButton = document.getElementById("put-away");
 const pageStatus = document.getElementById("page-status");
-const bookButtons = document.querySelectorAll(".book");
 
-let activeBook = null;
-let currentPage = 0;
-let lastFocusedBook = null;
+let currentBook = null;
+let spreads = [];
+let currentSpread = 0;
 
-function standardMarkup() {
-  document.querySelector(".left-page .page-inner").innerHTML = `
-    <span class="page-label" id="left-label">Dreamlands Respiratory</span>
-    <div class="page-ornament">✦</div>
-    <h2 id="book-title">Book title</h2>
-    <p id="book-subtitle" class="page-subtitle"></p>
-    <div class="page-divider"></div>
-    <p id="book-description"></p>
-    <div class="page-footer-number" id="left-page-number"></div>`;
-  document.querySelector(".right-page .page-inner").innerHTML = `
-    <span class="page-label" id="right-label">Contents</span>
-    <h3 id="right-heading">Contents</h3>
-    <div id="page-content" class="page-content"></div>
-    <div class="page-footer-number" id="right-page-number"></div>`;
+const esc = (value = "") => String(value).replace(/[&<>'"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));
+
+function spread(left, right, kind = "standard") {
+  return { left, right, kind };
 }
 
-function archiveMarkup() {
-  document.querySelector(".left-page .page-inner").innerHTML = `
-    <div class="archive-cover-page">
-      <span class="archive-small-title">THE</span>
-      <h2 id="archive-cover-title">Dreamland Archives</h2>
-      <span class="archive-small-title">A VISUAL RECORD</span>
-      <div class="archive-cover-mark">✦</div>
-    </div>`;
-  document.querySelector(".right-page .page-inner").innerHTML = `
-    <div class="archive-index-page">
-      <span class="page-label">Dreamland Archives</span>
+function renderIndexButton(item, action) {
+  return `<button class="index-button" type="button" data-action="${action}" data-id="${esc(item.id || "")}"><span>${esc(item.name)}</span><span class="index-meta">open →</span></button>`;
+}
+
+function residentsIndex() {
+  return siteData.residents.map(category => {
+    const characters = category.characters.map(character => renderIndexButton(character, "resident-character")).join("");
+    return `<section class="index-group">
+      <h4 class="index-group-title">${esc(category.name)}</h4>
+      <p class="index-meta">${esc(category.description)}</p>
+      <div class="index-list">${characters}</div>
+    </section>`;
+  }).join("");
+}
+
+function worldsIndex() {
+  return siteData.worlds.map(world => renderIndexButton(world, "world")).join("");
+}
+
+function archivesIndex() {
+  return siteData.archives.photoSpreads.map(spreadItem => `
+    <button class="index-button" type="button" data-action="archive" data-id="${esc(spreadItem.id)}">
+      <span>${esc(spreadItem.label || "Photo spread")}</span><span class="index-meta">view →</span>
+    </button>
+  `).join("");
+}
+
+function buildBook(bookKey) {
+  if (bookKey === "about") {
+    return [spread(`
+      <span class="page-label">ABOUT THE DREAMLANDS</span>
+      <div class="page-ornament">✦</div>
+      <h2>${esc(siteData.about.title)}</h2>
+      <p class="page-subtitle">${esc(siteData.about.subtitle)}</p>
+      <div class="page-divider"></div>
+      <p>${esc(siteData.about.body)}</p>
+    `, `
+      <span class="page-label">ABOUT</span>
+      <h3>About this volume</h3>
+      <p>Use this book for the foundational information you want visitors to read before wandering deeper into the Dreamlands.</p>
+    `)];
+  }
+
+  if (bookKey === "waypoints") {
+    const links = siteData.waypoints.links.map(link => `
+      <a class="external-link" href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">
+        <span><strong>${esc(link.name)}</strong><br><small class="index-meta">${esc(link.description)}</small></span><span>↗</span>
+      </a>
+    `).join("");
+    return [spread(`
+      <span class="page-label">DREAMLAND WAYPOINTS</span>
+      <div class="page-ornament">✦</div>
+      <h2>${esc(siteData.waypoints.title)}</h2>
+      <p class="page-subtitle">${esc(siteData.waypoints.subtitle)}</p>
+      <div class="page-divider"></div>
+      <div class="contents-grid">${links}</div>
+    `, `
+      <span class="page-label">WAYPOINTS</span>
+      <h3>Follow a link</h3>
+      <p>Every entry in this book is an external hyperlink. There are no internal waypoint pages.</p>
+    `)];
+  }
+
+  if (bookKey === "worlds") {
+    return [spread(`
+      <span class="page-label">DREAMLAND WORLDS</span>
+      <div class="page-ornament">✦</div>
+      <h2>Dreamland Worlds</h2>
+      <p class="page-subtitle">Choose a world to enter.</p>
+    `, `
+      <span class="page-label">INDEX</span>
+      <h3>Worlds</h3>
+      <div class="contents-grid">${worldsIndex()}</div>
+    `)];
+  }
+
+  if (bookKey === "residents") {
+    return [spread(`
+      <span class="page-label">DREAMLAND RESIDENTS</span>
+      <div class="page-ornament">✦</div>
+      <h2>Dreamland Residents</h2>
+      <p class="page-subtitle">A directory of those who inhabit the Dreamlands.</p>
+    `, `
+      <span class="page-label">INDEX</span>
+      <h3>Residents</h3>
+      <div class="contents-grid">${residentsIndex()}</div>
+    `)];
+  }
+
+  if (bookKey === "archives") {
+    const cover = `
+      <span class="page-label">DREAMLAND ARCHIVES</span>
+      <div class="page-ornament">✦</div>
+      <h2>${esc(siteData.archives.title)}</h2>
+      <p class="page-subtitle">${esc(siteData.archives.subtitle)}</p>
+      <div class="page-divider"></div>
+    `;
+    const contents = `
+      <span class="page-label">CONTENTS</span>
       <h3>Contents</h3>
-      <div id="archive-index" class="page-content"></div>
-    </div>`;
-}
-
-function archivePhotoMarkup(spread) {
-  document.querySelector(".left-page .page-inner").innerHTML = `<div class="archive-photo-page"><img class="archive-photo" src="${spread.left}" alt=""></div>`;
-  document.querySelector(".right-page .page-inner").innerHTML = `<div class="archive-photo-page"><img class="archive-photo" src="${spread.right}" alt=""></div>`;
-}
-
-function renderArchive() {
-  const book = books.archives;
-  if (currentPage === 0) {
-    archiveMarkup();
-    const index = document.getElementById("archive-index");
-    book.photoSpreads.forEach((_, i) => {
-      const button = document.createElement("button");
-      button.className = "contents-link archive-index-link";
-      button.type = "button";
-      button.textContent = `Photograph spread ${i + 1}`;
-      button.addEventListener("click", () => goToPage(i + 1));
-      index.appendChild(button);
+      <div class="contents-grid">${archivesIndex()}</div>
+    `;
+    const result = [spread(cover, contents)];
+    siteData.archives.photoSpreads.forEach(photo => {
+      result.push(spread(photoFigure(photo.left), photoFigure(photo.right), "photo"));
     });
-    pageStatus.textContent = "Cover & contents";
-    prevPage.disabled = true;
-    nextPage.disabled = book.photoSpreads.length === 0;
-    return;
+    return result;
   }
-  archivePhotoMarkup(book.photoSpreads[currentPage - 1]);
-  pageStatus.textContent = `Photo spread ${currentPage} of ${book.photoSpreads.length}`;
-  prevPage.disabled = currentPage === 0;
-  nextPage.disabled = currentPage === book.photoSpreads.length;
+
+  return [];
 }
 
-function renderWaypoints() {
-  standardMarkup();
-  const book = books.waypoints;
-  document.getElementById("left-label").textContent = "Dreamland Waypoints";
-  document.getElementById("book-title").textContent = book.title;
-  document.getElementById("book-subtitle").textContent = book.subtitle;
-  document.getElementById("book-description").textContent = "Each entry below is an external link. There are no internal waypoint pages.";
-  document.getElementById("right-label").textContent = "Links";
-  document.getElementById("right-heading").textContent = "Waypoints";
-  const list = document.getElementById("page-content");
-  book.links.forEach(link => {
-    const item = document.createElement("div");
-    item.className = "waypoint-link-item";
-    item.innerHTML = `<a class="waypoint-link" href="${link.url}" target="_blank" rel="noopener noreferrer"><span>${link.title}</span><small>${link.description}</small><b>↗</b></a>`;
-    list.appendChild(item);
-  });
-  pageStatus.textContent = "One page";
-  prevPage.disabled = true;
-  nextPage.disabled = true;
+function photoFigure(src) {
+  if (!src) return `<figure><div class="photo-placeholder">Add an image path in <code>script.js</code></div></figure>`;
+  return `<figure><img src="${esc(src)}" alt="" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="photo-placeholder" hidden>Image not found:<br>${esc(src)}</div></figure>`;
 }
 
-function renderWorlds() {
-  standardMarkup();
-  const book = books.worlds;
-  const titleEl = document.getElementById("book-title");
-  const subtitleEl = document.getElementById("book-subtitle");
-  const descriptionEl = document.getElementById("book-description");
-  const headingEl = document.getElementById("right-heading");
-  const contentEl = document.getElementById("page-content");
-  document.getElementById("left-label").textContent = book.title;
-  document.getElementById("right-label").textContent = "Index";
-  titleEl.textContent = book.title;
-  subtitleEl.textContent = book.subtitle;
-  descriptionEl.textContent = "Choose a world to open its entry.";
-  headingEl.textContent = "Worlds";
-  book.worlds.forEach((world, i) => {
-    const button = document.createElement("button");
-    button.className = "contents-link";
-    button.type = "button";
-    button.textContent = world.title;
-    button.addEventListener("click", () => goToPage(i + 1));
-    contentEl.appendChild(button);
-  });
-  pageStatus.textContent = `Index · ${book.worlds.length} worlds`;
-  prevPage.disabled = true;
-  nextPage.disabled = book.worlds.length === 0;
+function worldSpread(world) {
+  return spread(`
+    <div class="world-info">
+      <button class="back-link" type="button" data-action="back-worlds">← Back to world index</button>
+      <span class="page-label">WORLD</span>
+      <h2>${esc(world.name)}</h2>
+      <p>${esc(world.description)}</p>
+    </div>
+  `, `
+    <div class="world-image">
+      ${world.image ? `<img class="image-placeholder" src="${esc(world.image)}" alt="${esc(world.name)}">` : `<div class="image-placeholder">World image placeholder<br><small>Add an image path in <code>script.js</code></small></div>`}
+      <a class="enter-dream" href="${esc(world.mapUrl)}" target="_blank" rel="noopener noreferrer">Enter the dreamland</a>
+    </div>
+  `, "world");
 }
 
-function renderWorldPage(world) {
-  standardMarkup();
-  document.querySelector(".open-book").classList.add("world-page-mode");
-  document.getElementById("left-label").textContent = "Dreamland Worlds";
-  document.getElementById("book-title").textContent = world.title;
-  document.getElementById("book-subtitle").textContent = "World entry";
-  document.getElementById("book-description").textContent = world.text;
-  document.getElementById("right-label").textContent = world.title;
-  document.getElementById("right-heading").textContent = "";
-  document.getElementById("right-page-number").textContent = currentPage + 1;
-  document.getElementById("page-content").innerHTML = `
-    <div class="world-visual">
-      <div class="world-image-frame">
-        <img src="${world.image}" alt="" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;">
-        <div class="world-image-placeholder" hidden>Image placeholder</div>
-      </div>
-      <a class="enter-dream-button" href="${world.mapUrl}" target="_blank" rel="noopener noreferrer">Enter the dreamland</a>
-    </div>`;
-  pageStatus.textContent = `World ${currentPage} of ${books.worlds.worlds.length}`;
-  prevPage.disabled = currentPage === 0;
-  nextPage.disabled = currentPage === books.worlds.worlds.length;
+function residentSpread(category, character) {
+  return spread(`
+    <button class="back-link" type="button" data-action="back-residents">← Back to residents index</button>
+    <span class="page-label">${esc(category.name)}</span>
+    <div class="page-ornament">✦</div>
+    <h2>${esc(character.name)}</h2>
+    <p>${esc(character.description)}</p>
+  `, `
+    <span class="page-label">RESIDENT</span>
+    <h3>${esc(category.name)}</h3>
+    <p>Use this page for additional character information, artwork, notes, history, or anything else you want to add.</p>
+  `);
 }
 
-function renderStandardBook(book) {
-  standardMarkup();
-  const page = book.pages[currentPage];
-  const contents = currentPage === 0;
-  document.getElementById("left-label").textContent = book.title;
-  document.getElementById("right-label").textContent = contents ? "Contents" : book.title;
-  document.getElementById("book-title").textContent = book.title;
-  document.getElementById("book-subtitle").textContent = book.subtitle;
-  document.getElementById("book-description").textContent = contents ? "Choose an entry from the contents, or use the arrows to turn the pages." : page.text;
-  document.getElementById("right-heading").textContent = contents ? "Contents" : page.title;
-  document.getElementById("left-page-number").textContent = contents ? "" : currentPage;
-  document.getElementById("right-page-number").textContent = contents ? "" : currentPage + 1;
-  const content = document.getElementById("page-content");
-  if (contents) {
-    book.pages.slice(1).forEach((entry, i) => {
-      const button = document.createElement("button");
-      button.className = "contents-link";
-      button.type = "button";
-      button.textContent = entry.title;
-      button.addEventListener("click", () => goToPage(i + 1));
-      content.appendChild(button);
+function render() {
+  const current = spreads[currentSpread];
+  leftPage.classList.toggle("photo-page", current?.kind === "photo");
+  rightPage.classList.toggle("photo-page", current?.kind === "photo");
+  leftInner.innerHTML = current?.left || "";
+  rightInner.innerHTML = current?.right || "";
+  pageStatus.textContent = `Page ${currentSpread + 1} of ${spreads.length}`;
+  prevButton.disabled = currentSpread <= 0;
+  nextButton.disabled = currentSpread >= spreads.length - 1;
+  bindPageActions();
+}
+
+function bindPageActions() {
+  document.querySelectorAll("[data-action]").forEach(el => {
+    el.addEventListener("click", () => {
+      const action = el.dataset.action;
+      const id = el.dataset.id;
+      if (action === "world") openWorld(id);
+      if (action === "resident-character") openResidentCharacter(id);
+      if (action === "archive") openArchive(id);
+      if (action === "back-worlds") openBook("worlds", 0);
+      if (action === "back-residents") openBook("residents", 0);
     });
-  } else {
-    content.innerHTML = `<p class="page-continuation">${page.text}</p>`;
-  }
-  pageStatus.textContent = `Page ${currentPage + 1} of ${book.pages.length}`;
-  prevPage.disabled = currentPage === 0;
-  nextPage.disabled = currentPage === book.pages.length - 1;
+  });
 }
 
-function renderPage() {
-  if (!activeBook) return;
-  document.querySelector(".open-book").classList.remove("world-page-mode");
-  if (activeBook === "archives") return renderArchive();
-  if (activeBook === "waypoints") return renderWaypoints();
-  if (activeBook === "worlds") {
-    if (currentPage === 0) return renderWorlds();
-    return renderWorldPage(books.worlds.worlds[currentPage - 1]);
-  }
-  return renderStandardBook(books[activeBook]);
-}
-
-function goToPage(pageNumber) {
-  if (!activeBook) return;
-  let max;
-  if (activeBook === "archives") max = books.archives.photoSpreads.length;
-  else if (activeBook === "waypoints") max = 0;
-  else if (activeBook === "worlds") max = books.worlds.worlds.length;
-  else max = books[activeBook].pages.length - 1;
-  currentPage = Math.max(0, Math.min(pageNumber, max));
-  renderPage();
-}
-
-function next() { goToPage(currentPage + 1); }
-function previous() { goToPage(currentPage - 1); }
-
-function openBook(bookKey) {
-  if (!books[bookKey]) return;
-  activeBook = bookKey;
-  currentPage = 0;
-  lastFocusedBook = document.querySelector(`[data-book="${bookKey}"]`);
-  document.querySelector(".open-book").classList.toggle("archive-mode", bookKey === "archives");
-  renderPage();
+function openBook(bookKey, startSpread = 0) {
+  currentBook = bookKey;
+  spreads = buildBook(bookKey);
+  currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
   reader.classList.add("is-open");
   reader.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  requestAnimationFrame(() => putAway.focus());
+  render();
+}
+
+function openWorld(id) {
+  const world = siteData.worlds.find(item => item.id === id);
+  if (!world) return;
+  spreads = [...buildBook("worlds"), worldSpread(world)];
+  currentBook = "worlds";
+  currentSpread = 1;
+  render();
+}
+
+function openResidentCharacter(id) {
+  for (const category of siteData.residents) {
+    const character = category.characters.find(item => item.id === id);
+    if (character) {
+      spreads = [...buildBook("residents"), residentSpread(category, character)];
+      currentBook = "residents";
+      currentSpread = 1;
+      render();
+      return;
+    }
+  }
+}
+
+function openArchive(id) {
+  const index = siteData.archives.photoSpreads.findIndex(item => item.id === id);
+  if (index < 0) return;
+  spreads = buildBook("archives");
+  currentBook = "archives";
+  currentSpread = 1 + index;
+  render();
 }
 
 function closeBook() {
   reader.classList.remove("is-open");
   reader.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
-  activeBook = null;
-  currentPage = 0;
-  document.querySelector(".open-book").classList.remove("archive-mode", "world-page-mode");
-  if (lastFocusedBook) lastFocusedBook.focus();
 }
 
-bookButtons.forEach(button => button.addEventListener("click", () => openBook(button.dataset.book)));
-prevPage.addEventListener("click", previous);
-nextPage.addEventListener("click", next);
-putAway.addEventListener("click", closeBook);
-reader.querySelector(".reader-backdrop").addEventListener("click", closeBook);
-
+document.querySelectorAll(".book").forEach(book => {
+  book.addEventListener("click", () => openBook(book.dataset.book));
+});
+prevButton.addEventListener("click", () => { if (currentSpread > 0) { currentSpread--; render(); } });
+nextButton.addEventListener("click", () => { if (currentSpread < spreads.length - 1) { currentSpread++; render(); } });
+putAwayButton.addEventListener("click", closeBook);
+reader.addEventListener("click", event => { if (event.target.classList.contains("reader-backdrop")) closeBook(); });
 document.addEventListener("keydown", event => {
   if (!reader.classList.contains("is-open")) return;
-  if (event.key === "Escape") return closeBook();
-  if (event.key === "ArrowRight") { event.preventDefault(); next(); }
-  if (event.key === "ArrowLeft") { event.preventDefault(); previous(); }
+  if (event.key === "Escape") closeBook();
+  if (event.key === "ArrowLeft" && currentSpread > 0) { currentSpread--; render(); }
+  if (event.key === "ArrowRight" && currentSpread < spreads.length - 1) { currentSpread++; render(); }
 });
