@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Welcome to the Dreamlands Respiratory — a quiet archive of dreamland places, people, worlds, waypoints, and records.">
+  <title>Welcome to the Dreamlands Respiratory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <p class="eyebrow">A quiet archive beyond waking</p>
+      <h1>Welcome to the Dreamlands Respiratory</h1>
+      <p class="intro">Choose a volume from the shelf and wander wherever it opens.</p>
+    </header>
+
+    <main>
+      <section class="library" aria-labelledby="library-title">
+        <div class="section-heading">
+          <span class="section-rule"></span>
+          <h2 id="library-title">The Library</h2>
+          <span class="section-rule"></span>
+        </div>
+
+        <div class="bookshelf" aria-label="Dreamlands books">
+          <div class="shelf-top"></div>
+          <div class="books">
+            <button class="book book-1" data-book="about" aria-label="Open About the Dreamlands">
+              <span class="book-spine-title">About the Dreamlands</span>
+              <span class="book-number">I</span>
+            </button>
+            <button class="book book-2" data-book="waypoints" aria-label="Open Dreamland Waypoints">
+              <span class="book-spine-title">Dreamland Waypoints</span>
+              <span class="book-number">II</span>
+            </button>
+            <button class="book book-3" data-book="worlds" aria-label="Open Dreamland Worlds">
+              <span class="book-spine-title">Dreamland Worlds</span>
+              <span class="book-number">III</span>
+            </button>
+            <button class="book book-4" data-book="residents" aria-label="Open Dreamland Residents">
+              <span class="book-spine-title">Dreamland Residents</span>
+              <span class="book-number">IV</span>
+            </button>
+            <button class="book book-5" data-book="archives" aria-label="Open Dreamland Archives">
+              <span class="book-spine-title">Dreamland Archives</span>
+              <span class="book-number">V</span>
+            </button>
+          </div>
+          <div class="shelf-front"></div>
+          <div class="shelf-shadow"></div>
+        </div>
+
+        <p class="library-hint">Hover over a book to pull it from the shelf · Click to open</p>
+      </section>
+
+      <section class="reader" id="reader" aria-hidden="true">
+        <div class="reader-backdrop"></div>
+        <div class="open-book" role="dialog" aria-modal="true" aria-labelledby="book-title">
+          <div class="book-page left-page">
+            <div class="page-inner">
+              <span class="page-label">Dreamlands Respiratory</span>
+              <div class="page-ornament">✦</div>
+              <h2 id="book-title">Book title</h2>
+              <p id="book-subtitle" class="page-subtitle">A volume from the quiet shelves.</p>
+              <div class="page-divider"></div>
+              <p id="book-description">Select an entry from the index to begin exploring this volume.</p>
+            </div>
+          </div>
+
+          <div class="book-page right-page">
+            <div class="page-inner">
+              <span class="page-label">Index</span>
+              <h3>Contents</h3>
+              <ol id="book-index" class="book-index"></ol>
+              <p class="page-note">Each title is a doorway. Follow the one that calls to you.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="put-away" id="put-away" type="button">Put this book away</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>✦</span>
+      <span>Enter softly. Leave curious.</span>
+      <span>✦</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
