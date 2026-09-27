@@ -278,12 +278,43 @@ function bindPageActions() {
 
 function openBook(bookKey, startSpread = 0) {
   currentBook = bookKey;
-  spreads = buildBook(bookKey);
-  currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
+
+  // Waypoints is deliberately a single, self-contained spread.
+  // Keep it separate from the multi-page book logic so it cannot inherit
+  // the navigation behavior used by Worlds, Residents, or Archives.
+  if (bookKey === "waypoints") {
+    const links = siteData.waypoints.links.map(link => `
+      <a class="index-button external-index-link" href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">
+        <span>${esc(link.name)}</span><span class="index-meta">↗</span>
+      </a>
+    `).join("");
+
+    spreads = [spread(`
+      <span class="page-label">DREAMLAND WAYPOINTS</span>
+      <div class="page-ornament">✦</div>
+      <h2>${esc(siteData.waypoints.title)}</h2>
+      <p class="page-subtitle">${esc(siteData.waypoints.subtitle)}</p>
+      <div class="page-divider"></div>
+      <p>Use this book as a directory of places and paths that lead beyond the library. Choose an entry on the facing page to visit that destination.</p>
+      <p class="waypoint-note">This book has one spread only. The entries are external links.</p>
+    `, `
+      <span class="page-label">INDEX</span>
+      <h3>Waypoints</h3>
+      <div class="contents-grid">${links}</div>
+    `)];
+    currentSpread = 0;
+  } else {
+    spreads = buildBook(bookKey);
+    currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
+  }
+
   reader.classList.add("is-open");
   reader.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  render();
+
+  // Render on the next frame after the reader is marked open. This prevents
+  // the opening transition from briefly showing an empty book.
+  requestAnimationFrame(render);
 }
 
 function openWorld(id) {
@@ -324,7 +355,11 @@ function closeBook() {
 }
 
 document.querySelectorAll(".book").forEach(book => {
-  book.addEventListener("click", () => openBook(book.dataset.book));
+  book.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+    openBook(book.dataset.book);
+  });
 });
 prevButton.addEventListener("click", () => { if (currentSpread > 0) { currentSpread--; render(); } });
 nextButton.addEventListener("click", () => { if (currentSpread < spreads.length - 1) { currentSpread++; render(); } });
@@ -336,3 +371,5 @@ document.addEventListener("keydown", event => {
   if (event.key === "ArrowLeft" && currentSpread > 0) { currentSpread--; render(); }
   if (event.key === "ArrowRight" && currentSpread < spreads.length - 1) { currentSpread++; render(); }
 });
+
+if (location.hash === "#waypoints") openBook("waypoints");

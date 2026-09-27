@@ -139,3 +139,8 @@ h1 { margin: 0; color: #f5e9df; font-size: clamp(2.4rem, 6vw, 5.1rem); line-heig
 
 /* Dreamland Waypoints: external links styled exactly like an index entry. */
 .external-index-link { cursor: pointer; }
+
+
+/* Waypoints is one permanent spread; its entries are external links only. */
+.waypoint-note { color: #80636a; font-style: italic; }
+.external-index-link { display: flex; }
