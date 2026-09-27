@@ -9,7 +9,7 @@
   Archives: cover + contents spread -> image-only photo spreads.
 */
 
-const siteData = {
+const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp?width=1200
   about: {
     title: "About the Dreamlands",
     subtitle: "About the place beyond consciousness.",
@@ -158,8 +158,8 @@ function buildBook(bookKey) {
       <p>${esc(siteData.about.body)}</p>
     `, `
       <span class="page-label">ABOUT</span>
-      <h3>About this volume</h3>
-      <p>Use this book for the foundational information you want visitors to read before wandering deeper into the Dreamlands.</p>
+      <h3>Guide to the dreamlands library</h3>
+      <p>Here you will find more on the lore behind the dreamland as a whole, waypoints that can take you to other major anchors in the dreamland and where you may be able to add your dream into the dreamland, information for what's behind the doors, information on the residents, and even extra archives that the dreamer has stored in the library photobook.</p>
     `)];
   }
 
