@@ -20,24 +20,24 @@ const siteData = {
     title: "Dreamland Waypoints",
     subtitle: "A directory of places worth finding.",
     links: [
-      { name: "Waypoint One", description: "Replace this with your waypoint.", url: "https://example.com/" },
-      { name: "Waypoint Two", description: "Replace this with your waypoint.", url: "https://example.com/" },
-      { name: "Waypoint Three", description: "Replace this with your waypoint.", url: "https://example.com/" },
+      { name: "Janitor AI Profile", description: "Teleport over to the dreamor's profile.", url: "https://example.com/" },
+      { name: "Request Form", description: "Describe your dream for it to be fulfilled.", url: "https://example.com/" },
+      { name: "Discord", description: "Come along and dream with others.", url: "https://example.com/" },
     ],
   },
 
   worlds: [
     {
-      id: "pale-coast",
-      name: "The Pale Coast",
-      description: "A quiet shore where the sea seems to remember every dream that has ever touched it. Replace this text with the information for your world.",
+      id: "crimmshaw-heights",
+      name: "Crimmshaw Heights",
+      description: "A small town near mountain bases in Tennessee, home to nightlife, diverse groups of people, Westvale University, and plenty to see and do.",
       image: "",
       mapUrl: "https://example.com/",
     },
     {
-      id: "glass-forest",
-      name: "The Glass Forest",
-      description: "A forest of translucent trees, distant lights, and paths that do not always lead back the way they came. Replace this text with the information for your world.",
+      id: "veravinyth",
+      name: "Veravinyth",
+      description: "A world whose origins are unknown, where all species exist, some in peace others not. Land where you may...",
       image: "",
       mapUrl: "https://example.com/",
     },
@@ -45,28 +45,36 @@ const siteData = {
 
   residents: [
     {
-      id: "dreamers",
-      name: "Dreamers",
-      description: "Those who wander the Dreamlands while still carrying traces of waking life.",
+      id: "crimmshaw-residents",
+      name: "Crimmshaw Residents",
+      description: "Those whom reside in Crimmshaw Heights.",
       characters: [
-        { id: "dreamer-one", name: "Dreamer One", description: "Character information goes here. Add as much or as little as you like." },
+        { id: "lalala", name: "Lalala", description: "Character information goes here. Add as much or as little as you like." },
         { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident." },
       ],
     },
     {
-      id: "guides",
-      name: "Guides",
-      description: "Residents who know the paths, crossings, and hidden rules of the Dreamlands.",
+      id: "westvale-students",
+      name: "Westvale Students",
+      description: "The residents whom attend Westvale Univeristy in Crimmshaw Heights, TN.",
       characters: [
-        { id: "guide-one", name: "Guide One", description: "Character information goes here." },
+        { id: "lalalaa", name: "Lalalaa", description: "Character information goes here." },
       ],
     },
     {
-      id: "strangers",
-      name: "Strangers",
-      description: "Unfamiliar residents whose stories have not yet been fully recorded.",
+      id: "veravinythians",
+      name: "Veravinythians",
+      description: "Those whom are from Veravinyth with unknown origins...",
       characters: [
-        { id: "stranger-one", name: "Stranger One", description: "Character information goes here." },
+        { id: "veravinythian", name: "Veravinythian", description: "Character information goes here." },
+      ],
+    },
+    {
+      id: "faeries",
+      name: "Faeries",
+      description: "will figure out the name soon lol",
+      characters: [
+        { id: "kit", name: "Kit", description: "Character information goes here." },
       ],
     },
   ],
@@ -75,9 +83,12 @@ const siteData = {
     title: "Dreamland Archives",
     subtitle: "A visual record of things worth remembering.",
     photoSpreads: [
-      { id: "spread-1", left: "images/archives/dream-01.jpg", right: "images/archives/dream-02.jpg", label: "Photo spread 1" },
-      { id: "spread-2", left: "images/archives/dream-03.jpg", right: "images/archives/dream-04.jpg", label: "Photo spread 2" },
-      { id: "spread-3", left: "images/archives/dream-05.jpg", right: "images/archives/dream-06.jpg", label: "Photo spread 3" },
+      { id: "spread-1", left: "#", right: "#", label: "Photo spread 1" },
+      { id: "spread-2", left: "#", right: "#", label: "Photo spread 2" },
+      { id: "spread-3", left: "#", right: "#", label: "Photo spread 3" },
+      { id: "spread-4", left: "#", right: "#", label: "Photo spread 4" },
+      { id: "spread-5", left: "#", right: "#", label: "Photo spread 5" },
+      { id: "spread-6", left: "#", right: "#", label: "Photo spread 6" },
     ],
   },
 };
