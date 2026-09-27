@@ -119,11 +119,18 @@ function renderIndexButton(item, action) {
 
 function residentsIndex() {
   return siteData.residents.map(category => {
+    const panelId = `resident-category-${esc(category.id)}`;
     const characters = category.characters.map(character => renderIndexButton(character, "resident-character")).join("");
-    return `<section class="index-group">
-      <h4 class="index-group-title">${esc(category.name)}</h4>
-      <p class="index-meta">${esc(category.description)}</p>
-      <div class="index-list">${characters}</div>
+    return `<section class="resident-dropdown">
+      <button class="resident-category-toggle" type="button" data-action="toggle-resident-category" data-id="${esc(category.id)}" aria-expanded="false" aria-controls="${panelId}">
+        <span class="resident-category-name">${esc(category.name)}</span>
+        <span class="resident-category-count">${category.characters.length} ${category.characters.length === 1 ? "entry" : "entries"}</span>
+        <span class="resident-category-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="resident-category-panel" id="${panelId}" hidden>
+        <p class="index-meta resident-category-description">${esc(category.description)}</p>
+        <div class="index-list">${characters}</div>
+      </div>
     </section>`;
   }).join("");
 }
@@ -283,6 +290,14 @@ function bindPageActions() {
       if (action === "archive") openArchive(id);
       if (action === "back-worlds") openBook("worlds", 0);
       if (action === "back-residents") openBook("residents", 0);
+      if (action === "toggle-resident-category") {
+        const panel = document.getElementById(`resident-category-${id}`);
+        if (!panel) return;
+        const expanded = el.getAttribute("aria-expanded") === "true";
+        el.setAttribute("aria-expanded", String(!expanded));
+        panel.hidden = expanded;
+        el.classList.toggle("is-expanded", !expanded);
+      }
     });
   });
 }
