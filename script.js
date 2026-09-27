@@ -9,7 +9,7 @@
   Archives: cover + contents spread -> image-only photo spreads.
 */
 
-const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp?width=1200
+const siteData = {
   about: {
     title: "About the Dreamlands",
     subtitle: "About the place beyond consciousness.",
@@ -49,8 +49,8 @@ const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.w
       name: "Crimmshaw Residents",
       description: "Those whom reside in Crimmshaw Heights.",
       characters: [
-        { id: "cade-beaumont", name: "Cade Beaumont", image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp", description: "Character information goes here. Add as much or as little as you like." },
-        { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident." },
+        { id: "cade-beaumont", name: "Cade Beaumont", image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp", description: "Character information goes here. Add as much or as little as you like.", speakUrl: "https://example.com/" },
+        { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident.", speakUrl: "https://example.com/" },
       ],
     },
     {
@@ -58,7 +58,7 @@ const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.w
       name: "Westvale Students",
       description: "The residents whom attend Westvale Univeristy in Crimmshaw Heights, TN.",
       characters: [
-        { id: "lalalaa", name: "Lalalaa", description: "Character information goes here." },
+        { id: "lalalaa", name: "Lalalaa", description: "Character information goes here.", speakUrl: "https://example.com/" },
       ],
     },
     {
@@ -66,7 +66,7 @@ const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.w
       name: "Veravinythians",
       description: "Those whom are from Veravinyth with unknown origins...",
       characters: [
-        { id: "veravinythian", name: "Veravinythian", description: "Character information goes here." },
+        { id: "veravinythian", name: "Veravinythian", description: "Character information goes here.", speakUrl: "https://example.com/" },
       ],
     },
     {
@@ -74,7 +74,7 @@ const siteData = {https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.w
       name: "Faeries",
       description: "will figure out the name soon lol",
       characters: [
-        { id: "kit", name: "Kit", description: "Character information goes here." },
+        { id: "kit", name: "Kit", description: "Character information goes here.", speakUrl: "https://example.com/" },
       ],
     },
   ],
@@ -255,16 +255,23 @@ function worldSpread(world) {
 }
 
 function residentSpread(category, character) {
+  const portrait = character.image
+    ? `<img class="resident-portrait" src="${esc(character.image)}" alt="${esc(character.name)}" onerror="this.style.display='none'; this.nextElementSibling.hidden=false;"><div class="image-placeholder resident-image-fallback" hidden>Image not found:<br>${esc(character.image)}</div>`
+    : `<div class="image-placeholder resident-image-placeholder">Resident image placeholder<br><small>Add an image URL or path in <code>script.js</code></small></div>`;
+
+  const speakUrl = character.speakUrl || "#";
+
   return spread(`
     <button class="back-link" type="button" data-action="back-residents">← Back to residents index</button>
     <span class="page-label">${esc(category.name)}</span>
-    <div class="page-ornament">✦</div>
-    <h2>${esc(character.name)}</h2>
-    <p>${esc(character.description)}</p>
+    <p class="index-meta">Resident ${esc(character.name)}</p>
   `, `
-    <span class="page-label">RESIDENT</span>
-    <h3>${esc(category.name)}</h3>
-    <p>Use this page for additional character information, artwork, notes, history, or anything else you want to add.</p>
+    <div class="resident-profile">
+      <div class="resident-profile-image">${portrait}</div>
+      <h2>${esc(character.name)}</h2>
+      <p>${esc(character.description)}</p>
+      <a class="speak-resident" href="${esc(speakUrl)}" target="_blank" rel="noopener noreferrer">Speak with the resident ✦</a>
+    </div>
   `);
 }
 
@@ -360,6 +367,24 @@ function openBook(bookKey, startSpread = 0) {
       <div class="contents-grid">${links}</div>
     `)];
     currentSpread = 0;
+  } else if (bookKey === "worlds") {
+    spreads = [
+      ...buildBook("worlds"),
+      ...siteData.worlds.map(worldSpread)
+    ];
+    currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
+  } else if (bookKey === "residents") {
+    const characterSpreads = [];
+    for (const category of siteData.residents) {
+      for (const character of category.characters) {
+        characterSpreads.push(residentSpread(category, character));
+      }
+    }
+    spreads = [
+      ...buildBook("residents"),
+      ...characterSpreads
+    ];
+    currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
   } else {
     spreads = buildBook(bookKey);
     currentSpread = Math.max(0, Math.min(startSpread, spreads.length - 1));
@@ -378,29 +403,53 @@ function openBook(bookKey, startSpread = 0) {
 }
 
 function openWorld(id) {
-  const world = siteData.worlds.find(item => item.id === id);
-  if (!world) return;
-  spreads = [...buildBook("worlds"), worldSpread(world)];
+  const index = siteData.worlds.findIndex(item => item.id === id);
+  if (index < 0) return;
+
+  spreads = [
+    ...buildBook("worlds"),
+    ...siteData.worlds.map(worldSpread)
+  ];
   currentBook = "worlds";
-  currentSpread = 1;
-  mobilePageIndex = 2;
+  currentSpread = 1 + index;
+  mobilePageIndex = currentSpread * 2;
   mobileTurnDirection = 1;
   render();
 }
 
 function openResidentCharacter(id) {
+  let targetIndex = -1;
   for (const category of siteData.residents) {
-    const character = category.characters.find(item => item.id === id);
-    if (character) {
-      spreads = [...buildBook("residents"), residentSpread(category, character)];
-      currentBook = "residents";
-      currentSpread = 1;
-      mobilePageIndex = 2;
-      mobileTurnDirection = 1;
-      render();
-      return;
+    const characterIndex = category.characters.findIndex(item => item.id === id);
+    if (characterIndex >= 0) {
+      let count = 0;
+      for (const previousCategory of siteData.residents) {
+        if (previousCategory === category) break;
+        count += previousCategory.characters.length;
+      }
+      targetIndex = count + characterIndex;
+      break;
     }
   }
+
+  if (targetIndex < 0) return;
+
+  const characterSpreads = [];
+  for (const category of siteData.residents) {
+    for (const character of category.characters) {
+      characterSpreads.push(residentSpread(category, character));
+    }
+  }
+
+  spreads = [
+    ...buildBook("residents"),
+    ...characterSpreads
+  ];
+  currentBook = "residents";
+  currentSpread = 1 + targetIndex;
+  mobilePageIndex = currentSpread * 2;
+  mobileTurnDirection = 1;
+  render();
 }
 
 function openArchive(id) {
