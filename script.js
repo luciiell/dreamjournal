@@ -12,15 +12,15 @@
 const siteData = {
   about: {
     title: "About the Dreamlands",
-    subtitle: "A small guide to the place beyond waking.",
-    body: "This is where you can write the introduction, history, rules, mythology, or anything else that explains what the Dreamlands are.",
+    subtitle: "About the place beyond consciousness.",
+    body: "Welcome to the dreamlands. The dreamlands are a place that is within the dreamer's, Luc's, subconscious. Here there are many doors that open and lead to each dream. I, Dius the robot whom resides here and represents the dreamer and the dreamlands themselves, am the one who is responsible for maintaining it. It is my duty to monitor and release the dreams from the subconscious when the time is right, if I do not it can lead to dream corruption where the dreams may take darker turns. This is so you don't get lost in the dreams, please proceed normally.",
   },
 
   waypoints: {
     title: "Dreamland Waypoints",
-    subtitle: "A directory of places worth finding.",
+    subtitle: "Where you will find the different main points of the dreamland.",
     links: [
-      { name: "Janitor AI Profile", description: "Teleport over to the dreamor's profile.", url: "https://example.com/" },
+      { name: "Janitor AI Profile", description: "Teleport over to the dreamor's profile.", url: "https://janitorai.com/profiles/bea7dc0d-b04f-4ad0-b5d0-f71f07f4d6b4_profile-of-amuradius" },
       { name: "Request Form", description: "Describe your dream for it to be fulfilled.", url: "https://example.com/" },
       { name: "Discord", description: "Come along and dream with others.", url: "https://example.com/" },
     ],
@@ -31,14 +31,14 @@ const siteData = {
       id: "crimmshaw-heights",
       name: "Crimmshaw Heights",
       description: "A small town near mountain bases in Tennessee, home to nightlife, diverse groups of people, Westvale University, and plenty to see and do.",
-      image: "",
+      image: "https://ella.janitorai.com/media-approved/-G-rNxWUbC7DsJou7kSI2.webp",
       mapUrl: "https://example.com/",
     },
     {
       id: "veravinyth",
       name: "Veravinyth",
       description: "A world whose origins are unknown, where all species exist, some in peace others not. Land where you may...",
-      image: "",
+      image: "https://ella.janitorai.com/media-approved/AdGeDzgFThY9_LZRUXLhL.webp",
       mapUrl: "https://example.com/",
     },
   ],
@@ -49,7 +49,7 @@ const siteData = {
       name: "Crimmshaw Residents",
       description: "Those whom reside in Crimmshaw Heights.",
       characters: [
-        { id: "lalala", name: "Lalala", description: "Character information goes here. Add as much or as little as you like." },
+        { id: "cade-beaumont", name: "Cade Beaumont", image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp", description: "Character information goes here. Add as much or as little as you like." },
         { id: "dreamer-two", name: "Dreamer Two", description: "Another character entry. Duplicate this object to add another resident." },
       ],
     },
