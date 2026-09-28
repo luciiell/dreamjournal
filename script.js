@@ -675,10 +675,15 @@ function closeBook() {
 }
 
 document.querySelectorAll(".book").forEach(book => {
-  book.addEventListener("click", event => {
+  const open = event => {
     event.preventDefault();
     event.stopPropagation();
     openBook(book.dataset.book);
+  };
+
+  book.addEventListener("click", open);
+  book.addEventListener("pointerup", event => {
+    if (event.pointerType === "mouse") open(event);
   });
 });
 prevButton.addEventListener("click", () => {

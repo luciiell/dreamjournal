@@ -36,10 +36,10 @@ h1 { margin: 0; color: #f5e9df; font-size: clamp(2.4rem, 6vw, 5.1rem); line-heig
 .section-rule { width: 70px; height: 1px; background: rgba(239,220,214,.55); }
 .library { max-width: 1050px; margin: 0 auto; }
 .bookshelf { position: relative; margin: 0 auto; padding: 38px 46px 54px; max-width: 900px; min-height: 330px; }
-.shelf-top { position: absolute; inset: 0 24px 35px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #785146, #4e332d 72%, #38231f); box-shadow: inset 0 8px 18px rgba(255,255,255,.07), 0 18px 30px var(--shadow); }
+.shelf-top { position: absolute; pointer-events: none; inset: 0 24px 35px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #785146, #4e332d 72%, #38231f); box-shadow: inset 0 8px 18px rgba(255,255,255,.07), 0 18px 30px var(--shadow); }
 .shelf-top::after { content: ""; position: absolute; inset: 0; opacity: .13; background: repeating-linear-gradient(8deg, transparent 0 13px, #e1ad7d 14px 15px); }
-.books { position: relative; z-index: 2; display: flex; align-items: end; justify-content: center; gap: 8px; height: 250px; perspective: 1000px; }
-.book { position: relative; width: 122px; height: 226px; border: 0; border-radius: 5px 7px 5px 3px; color: #f5e6d9; cursor: pointer; box-shadow: inset -9px 0 0 rgba(0,0,0,.12), inset 4px 0 0 rgba(255,255,255,.09), 4px 8px 12px rgba(0,0,0,.28); transform-origin: bottom center; transition: transform .24s ease, filter .24s ease; }
+.books { position: relative; z-index: 10; display: flex; align-items: end; justify-content: center; gap: 8px; height: 250px; perspective: 1000px; }
+.book { position: relative; z-index: 1; pointer-events: auto; width: 122px; height: 226px; border: 0; border-radius: 5px 7px 5px 3px; color: #f5e6d9; cursor: pointer; box-shadow: inset -9px 0 0 rgba(0,0,0,.12), inset 4px 0 0 rgba(255,255,255,.09), 4px 8px 12px rgba(0,0,0,.28); transform-origin: bottom center; transition: transform .24s ease, filter .24s ease; }
 .book:hover, .book:focus-visible { transform: translateY(-18px) rotateY(-5deg) rotateZ(-1deg); filter: brightness(1.08); outline: none; }
 .book::before { content: ""; position: absolute; inset: 10px 11px; border: 1px solid rgba(255,255,255,.35); border-radius: 3px; }
 .book-spine-title { position: absolute; left: 50%; top: 28px; transform: translateX(-50%); writing-mode: vertical-rl; text-orientation: mixed; white-space: nowrap; font-size: 1rem; letter-spacing: .04em; }
@@ -49,8 +49,8 @@ h1 { margin: 0; color: #f5e9df; font-size: clamp(2.4rem, 6vw, 5.1rem); line-heig
 .book-3 { background: linear-gradient(90deg,#69514b,#967266 48%,#5c453f); }
 .book-4 { background: linear-gradient(90deg,#544a5d,#77677d 48%,#494052); }
 .book-5 { background: linear-gradient(90deg,#796042,#a78358 48%,#634c36); }
-.shelf-front { position: absolute; z-index: 3; left: 14px; right: 14px; bottom: 0; height: 36px; border-radius: 5px; background: linear-gradient(#704a3d,#442c26); box-shadow: 0 9px 16px rgba(0,0,0,.3); }
-.shelf-shadow { position: absolute; z-index: 1; left: 70px; right: 70px; bottom: 22px; height: 26px; background: rgba(0,0,0,.42); filter: blur(14px); }
+.shelf-front { position: absolute; z-index: 3; pointer-events: none; left: 14px; right: 14px; bottom: 0; height: 36px; border-radius: 5px; background: linear-gradient(#704a3d,#442c26); box-shadow: 0 9px 16px rgba(0,0,0,.3); }
+.shelf-shadow { position: absolute; pointer-events: none; z-index: 1; left: 70px; right: 70px; bottom: 22px; height: 26px; background: rgba(0,0,0,.42); filter: blur(14px); }
 .library-hint { text-align: center; margin: 3px 0 0; color: #d9bebc; font-size: .78rem; letter-spacing: .06em; }
 
 .reader { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
