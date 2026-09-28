@@ -44,6 +44,11 @@ const siteData = {
   ],
 
   residents: [
+    {
+      id: "crimmshaw-residents",
+      name: "Crimmshaw Residents",
+      description: "Those whom reside in Crimmshaw Heights.",
+      characters: [
         {
           id: "cade-beaumont",
           name: "Cade Beaumont",
