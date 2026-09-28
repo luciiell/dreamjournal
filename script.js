@@ -50,98 +50,98 @@ const siteData = {
       description: "Those whom reside in Crimmshaw Heights.",
       characters: [
         {
-          id: "cade-beaumont",
+          id: "cade-beaumont-1",
           name: "Cade Beaumont",
           image: "https://ella.janitorai.com/media-approved/D95Co8mUEhstWWiQE8GYa.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/5714755e-fad8-4cf0-bb02-cd3006ef5ccf_character-cade-beaumont"
         },
         {
-          id: "ren-takahashi",
+          id: "ren-takahashi-1",
           name: "Ren Takahashi",
           image: "https://ella.janitorai.com/media-approved/Z1culKQ0yIMmaU_siA_qP.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/446c496b-74e7-4fd1-b739-3921b24fd99d_character-ren-takahashi"
         },
         {
-          id: "rhys-han",
+          id: "rhys-han-1",
           name: "Rhys Han",
           image: "https://ella.janitorai.com/media-approved/MjFj9SKmr59woYKOey9NC.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/e90ef1a7-428e-47a2-b69d-db95fa43a5d3_character-rhys-han"
         },
         {
-          id: "axel-blackwood",
+          id: "axel-blackwood-1",
           name: "Axel Blackwood",
           image: "https://ella.janitorai.com/media-approved/hVYA1Dv6ERXPTGJkgmZCH.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/44666bf7-a7f3-4a0c-94ab-b4a29d87ece7_character-axel-blackwood"
         },
         {
-          id: "milo-axford",
+          id: "milo-axford-1",
           name: "Milo Axford",
           image: "https://ella.janitorai.com/media-approved/-1K9pbMadOxFv0pvqyhps.webp",
           description: "Another character entry.",
           speakUrl: "hhttps://janitorai.com/characters/b72f6e4f-eefc-4808-a80c-ceb9c5a69bbc_character-milo-axford"
         },
         {
-          id: "nova-blackwood",
+          id: "nova-blackwood-1",
           name: "Nova Blackwood",
           image: "https://ella.janitorai.com/media-approved/8Brw7zWWL3dEbnxV7997S.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/80495114-07c2-4026-b3ef-82a77a92d9df_character-nova-blackwood"
         },
         {
-          id: "carly-simmons",
+          id: "carly-simmons-1",
           name: "Carly Simmons",
           image: "https://ella.janitorai.com/media-approved/oGor707-hgeq1by0xydma.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/9a2a8045-ae14-427e-9bb6-2dcd7bebe4da_character-carly-simmons"
         },
         {
-          id: "sam-myers",
+          id: "sam-myers-1",
           name: "Sam Myers",
           image: "https://ella.janitorai.com/media-approved/-OerPVGGAsFX6PfnOkQ5y.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/dba27d90-2855-4be4-b835-9c803b79e80f_character-sam-myers"
         },
         {
-          id: "cam-blackwood",
+          id: "cam-blackwood-1",
           name: "Cam Blackwood",
           image: "https://ella.janitorai.com/media-approved/n466zjOlLjzt0ml-k1oPO.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/cc17477e-e149-490a-b3ce-9f610a67337d_character-cam-blackwood"
         },
         {
-          id: "mateo-morales",
+          id: "mateo-morales-1",
           name: "Mateo Morales",
           image: "https://ella.janitorai.com/media-approved/t1kbv7xOkkStYgEnFu5FH.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/7110b5a9-e4c0-4598-9bfa-d9a3ffeac68c_character-mateo-morales"
         },
         {
-          id: "marcus-bennett",
+          id: "marcus-bennett-1",
           name: "Marcus Bennett",
           image: "https://ella.janitorai.com/media-approved/LIyYTcMcXhNcwHMl78cvy.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/6564de52-cbcb-4a9f-9269-26ade1026b03_character-marcus-bennett"
         },
         {
-          id: "juno-choi",
+          id: "juno-choi-1",
           name: "Juno Choi",
           image: "https://ella.janitorai.com/media-approved/9wlSraG49mP_oQC-ciRQ4.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/41b7d0b7-d575-409a-b6d2-fa8a0f2f9369_character-juno-choi"
         },
         {
-          id: "riley-hollis",
+          id: "riley-hollis-1",
           name: "Riley Hollis",
           image: "https://ella.janitorai.com/media-approved/q4aUmn4WGGEwatvCRJt--.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/81f06a44-2fc0-4e43-8443-c0fd75946892_character-riley-hollis"
         },
         {
-          id: "naya-delgado",
+          id: "naya-delgado-1",
           name: "Naya Delgado",
           image: "https://ella.janitorai.com/media-approved/msd7KILQyumbmG87P_y2R.webp",
           description: "Another character entry.",
