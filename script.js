@@ -44,24 +44,103 @@ const siteData = {
   ],
 
   residents: [
-    {
-      id: "crimmshaw-residents",
-      name: "Crimmshaw Residents",
-      description: "Those whom reside in Crimmshaw Heights.",
-      characters: [
         {
-          id: "dreamer1",
-          name: "Dreamer1",
-          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          id: "cade-beaumont",
+          name: "Cade Beaumont",
+          image: "https://ella.janitorai.com/media-approved/D95Co8mUEhstWWiQE8GYa.webp",
           description: "Another character entry.",
-          speakUrl: "https://example.com/"
+          speakUrl: "https://janitorai.com/characters/5714755e-fad8-4cf0-bb02-cd3006ef5ccf_character-cade-beaumont"
         },
         {
-          id: "dreamer1",
-          name: "Dreamer1",
-          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          id: "ren-takahashi",
+          name: "Ren Takahashi",
+          image: "https://ella.janitorai.com/media-approved/Z1culKQ0yIMmaU_siA_qP.webp",
           description: "Another character entry.",
-          speakUrl: "https://example.com/"
+          speakUrl: "https://janitorai.com/characters/446c496b-74e7-4fd1-b739-3921b24fd99d_character-ren-takahashi"
+        },
+        {
+          id: "rhys-han",
+          name: "Rhys Han",
+          image: "https://ella.janitorai.com/media-approved/MjFj9SKmr59woYKOey9NC.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/e90ef1a7-428e-47a2-b69d-db95fa43a5d3_character-rhys-han"
+        },
+        {
+          id: "axel-blackwood",
+          name: "Axel Blackwood",
+          image: "https://ella.janitorai.com/media-approved/hVYA1Dv6ERXPTGJkgmZCH.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/44666bf7-a7f3-4a0c-94ab-b4a29d87ece7_character-axel-blackwood"
+        },
+        {
+          id: "milo-axford",
+          name: "Milo Axford",
+          image: "https://ella.janitorai.com/media-approved/-1K9pbMadOxFv0pvqyhps.webp",
+          description: "Another character entry.",
+          speakUrl: "hhttps://janitorai.com/characters/b72f6e4f-eefc-4808-a80c-ceb9c5a69bbc_character-milo-axford"
+        },
+        {
+          id: "nova-blackwood",
+          name: "Nova Blackwood",
+          image: "https://ella.janitorai.com/media-approved/8Brw7zWWL3dEbnxV7997S.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/80495114-07c2-4026-b3ef-82a77a92d9df_character-nova-blackwood"
+        },
+        {
+          id: "carly-simmons",
+          name: "Carly Simmons",
+          image: "https://ella.janitorai.com/media-approved/oGor707-hgeq1by0xydma.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/9a2a8045-ae14-427e-9bb6-2dcd7bebe4da_character-carly-simmons"
+        },
+        {
+          id: "sam-myers",
+          name: "Sam Myers",
+          image: "https://ella.janitorai.com/media-approved/-OerPVGGAsFX6PfnOkQ5y.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/dba27d90-2855-4be4-b835-9c803b79e80f_character-sam-myers"
+        },
+        {
+          id: "cam-blackwood",
+          name: "Cam Blackwood",
+          image: "https://ella.janitorai.com/media-approved/n466zjOlLjzt0ml-k1oPO.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/cc17477e-e149-490a-b3ce-9f610a67337d_character-cam-blackwood"
+        },
+        {
+          id: "mateo-morales",
+          name: "Mateo Morales",
+          image: "https://ella.janitorai.com/media-approved/t1kbv7xOkkStYgEnFu5FH.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/7110b5a9-e4c0-4598-9bfa-d9a3ffeac68c_character-mateo-morales"
+        },
+        {
+          id: "marcus-bennett",
+          name: "Marcus Bennett",
+          image: "https://ella.janitorai.com/media-approved/LIyYTcMcXhNcwHMl78cvy.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/6564de52-cbcb-4a9f-9269-26ade1026b03_character-marcus-bennett"
+        },
+        {
+          id: "juno-choi",
+          name: "Juno Choi",
+          image: "https://ella.janitorai.com/media-approved/9wlSraG49mP_oQC-ciRQ4.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/41b7d0b7-d575-409a-b6d2-fa8a0f2f9369_character-juno-choi"
+        },
+        {
+          id: "riley-hollis",
+          name: "Riley Hollis",
+          image: "https://ella.janitorai.com/media-approved/q4aUmn4WGGEwatvCRJt--.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/81f06a44-2fc0-4e43-8443-c0fd75946892_character-riley-hollis"
+        },
+        {
+          id: "naya-delgado",
+          name: "Naya Delgado",
+          image: "https://ella.janitorai.com/media-approved/msd7KILQyumbmG87P_y2R.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/profiles/bea7dc0d-b04f-4ad0-b5d0-f71f07f4d6b4_profile-of-amuradius"
         },
       ],
     },
@@ -73,16 +152,100 @@ const siteData = {
         {
           id: "cade-beaumont",
           name: "Cade Beaumont",
-          image: "https://ella.janitorai.com/bot-avatars/hlLHmvS-leRpIE7HbeJhd.webp",
+          image: "https://ella.janitorai.com/media-approved/D95Co8mUEhstWWiQE8GYa.webp",
           description: "Another character entry.",
           speakUrl: "https://janitorai.com/characters/5714755e-fad8-4cf0-bb02-cd3006ef5ccf_character-cade-beaumont"
         },
         {
-          id: "dreamer1",
-          name: "Dreamer1",
-          image: "https://your-image-url-here.com/dreamer-two.jpg",
+          id: "ren-takahashi",
+          name: "Ren Takahashi",
+          image: "https://ella.janitorai.com/media-approved/Z1culKQ0yIMmaU_siA_qP.webp",
           description: "Another character entry.",
-          speakUrl: "https://example.com/"
+          speakUrl: "https://janitorai.com/characters/446c496b-74e7-4fd1-b739-3921b24fd99d_character-ren-takahashi"
+        },
+        {
+          id: "rhys-han",
+          name: "Rhys Han",
+          image: "https://ella.janitorai.com/media-approved/MjFj9SKmr59woYKOey9NC.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/e90ef1a7-428e-47a2-b69d-db95fa43a5d3_character-rhys-han"
+        },
+        {
+          id: "axel-blackwood",
+          name: "Axel Blackwood",
+          image: "https://ella.janitorai.com/media-approved/hVYA1Dv6ERXPTGJkgmZCH.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/44666bf7-a7f3-4a0c-94ab-b4a29d87ece7_character-axel-blackwood"
+        },
+        {
+          id: "milo-axford",
+          name: "Milo Axford",
+          image: "https://ella.janitorai.com/media-approved/-1K9pbMadOxFv0pvqyhps.webp",
+          description: "Another character entry.",
+          speakUrl: "hhttps://janitorai.com/characters/b72f6e4f-eefc-4808-a80c-ceb9c5a69bbc_character-milo-axford"
+        },
+        {
+          id: "nova-blackwood",
+          name: "Nova Blackwood",
+          image: "https://ella.janitorai.com/media-approved/8Brw7zWWL3dEbnxV7997S.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/80495114-07c2-4026-b3ef-82a77a92d9df_character-nova-blackwood"
+        },
+        {
+          id: "carly-simmons",
+          name: "Carly Simmons",
+          image: "https://ella.janitorai.com/media-approved/oGor707-hgeq1by0xydma.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/9a2a8045-ae14-427e-9bb6-2dcd7bebe4da_character-carly-simmons"
+        },
+        {
+          id: "sam-myers",
+          name: "Sam Myers",
+          image: "https://ella.janitorai.com/media-approved/-OerPVGGAsFX6PfnOkQ5y.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/dba27d90-2855-4be4-b835-9c803b79e80f_character-sam-myers"
+        },
+        {
+          id: "cam-blackwood",
+          name: "Cam Blackwood",
+          image: "https://ella.janitorai.com/media-approved/n466zjOlLjzt0ml-k1oPO.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/cc17477e-e149-490a-b3ce-9f610a67337d_character-cam-blackwood"
+        },
+        {
+          id: "mateo-morales",
+          name: "Mateo Morales",
+          image: "https://ella.janitorai.com/media-approved/t1kbv7xOkkStYgEnFu5FH.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/7110b5a9-e4c0-4598-9bfa-d9a3ffeac68c_character-mateo-morales"
+        },
+        {
+          id: "marcus-bennett",
+          name: "Marcus Bennett",
+          image: "https://ella.janitorai.com/media-approved/LIyYTcMcXhNcwHMl78cvy.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/6564de52-cbcb-4a9f-9269-26ade1026b03_character-marcus-bennett"
+        },
+        {
+          id: "juno-choi",
+          name: "Juno Choi",
+          image: "https://ella.janitorai.com/media-approved/9wlSraG49mP_oQC-ciRQ4.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/41b7d0b7-d575-409a-b6d2-fa8a0f2f9369_character-juno-choi"
+        },
+        {
+          id: "riley-hollis",
+          name: "Riley Hollis",
+          image: "https://ella.janitorai.com/media-approved/q4aUmn4WGGEwatvCRJt--.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/characters/81f06a44-2fc0-4e43-8443-c0fd75946892_character-riley-hollis"
+        },
+        {
+          id: "naya-delgado",
+          name: "Naya Delgado",
+          image: "https://ella.janitorai.com/media-approved/msd7KILQyumbmG87P_y2R.webp",
+          description: "Another character entry.",
+          speakUrl: "https://janitorai.com/profiles/bea7dc0d-b04f-4ad0-b5d0-f71f07f4d6b4_profile-of-amuradius"
         },
       ],
     },
